@@ -1,25 +1,36 @@
 # Grammar Drill Kit
 
-Grammar Drill Kit is a lightweight static English grammar practice app for Russian-speaking learners who want to maintain and improve English from approximately A2 to C1. Iteration 1 proves that one reusable quiz engine can power different learning modules without duplicating quiz logic.
+Grammar Drill Kit is a lightweight static English grammar practice app for Russian-speaking learners who want to maintain and improve English from approximately A2 to C1. Iteration 2 builds on the first release and proves that one reusable quiz engine can power different learning modules without duplicating quiz logic.
 
-## Iteration 1 scope
+## Use the app
+
+Open the public GitHub Pages app in any modern browser:
+
+https://michael-systems.github.io/GrammarDrillKit/
+
+Normal learner usage requires no server, installation, terminal commands, download, account, or setup. Friends and learners can simply open the link and practice in the browser.
+
+## Iteration 2 scope
 
 Implemented now:
 
 - Vanilla HTML, CSS, and JavaScript only.
 - Native ES modules that work on GitHub Pages.
 - Three demo modules: Phrasal Verbs, Conditionals, and Modal Verbs.
-- Multiple-choice sessions with module, difficulty, and session-size selection.
+- Multiple-choice sessions with module, difficulty, and 10 / 20 / 50 / All session-size selection.
+- Persistent browser-only progress using `localStorage`: best results by module and level, last practiced dates, saved mistakes, and selected theme.
+- Mistakes Review across all modules, using stored question IDs and cleaning up stale IDs when module content changes.
+- Mistake mastery rule: the same mistake must be answered correctly twice consecutively in Mistakes Review before it is removed; a wrong answer or “I don’t know” resets that review counter.
+- Compact progress summary and a reset-progress action that keeps the selected theme.
+- Light/dark theme switching, saved only in the current browser.
 - One question at a time with immediate feedback, correct answer, explanation, optional Russian translation, separate example reveal, next navigation, and final score.
-- Dependency-free tests for quiz-engine logic using Node's built-in test runner.
+- Dependency-free tests for quiz-engine and storage logic using Node's built-in test runner.
 
 Intentionally deferred:
 
 - Full question database.
 - Text-input questions, although the engine reserves a `text_input` type constant for future use.
-- localStorage and mistake tracking.
-- Mistakes, Mixed, Exam, and Focused Practice modes.
-- Dark/light theme switching.
+- Mixed, Exam, and Focused Practice modes.
 - Backend, authentication, database, external APIs, packages, bundlers, and frameworks.
 
 ## Architecture
@@ -42,6 +53,7 @@ styles.css
 src/
   app.js
   quiz-engine.js
+  storage.js
   module-registry.js
   utilities.js
   modules/
@@ -50,6 +62,7 @@ src/
     modal-verbs.js
 tests/
   quiz-engine.test.mjs
+  storage.test.mjs
 ```
 
 ## Module schema
@@ -73,7 +86,7 @@ export const exampleModule = {
 
 ## Question schema
 
-Iteration 1 implements only multiple-choice questions:
+The current app implements only multiple-choice questions:
 
 ```js
 {
@@ -93,9 +106,9 @@ Iteration 1 implements only multiple-choice questions:
 
 Question IDs should be stable and unique within the full app, for example `modal-verbs-006`.
 
-## Run locally
+## Developer local testing
 
-Because the app uses native ES modules, open it through a static server rather than directly from the filesystem. From the repository root, run one of these commands:
+The public link above is the recommended path for normal learners. Developers testing a cloned repository locally should use a simple static server because the app uses native ES modules. From the repository root, run one of these commands:
 
 ```bash
 python3 -m http.server 8000
@@ -108,10 +121,10 @@ If Python is unavailable, any simple static server is fine as long as it serves 
 ## Run tests
 
 ```bash
-node --test tests/quiz-engine.test.mjs
+node --test
 ```
 
-The tests use Node's built-in test runner and require no npm install step.
+The tests use Node's built-in test runner and require no npm install step. Progress data remains only in the current browser through `localStorage` under the `grammar-drill-kit-progress` key; there is no account, cloud sync, analytics, import/export, or backend.
 
 ## GitHub Pages compatibility
 
