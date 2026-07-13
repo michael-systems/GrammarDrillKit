@@ -84,3 +84,21 @@ test('stale question cleanup removes missing question IDs', () => {
   assert.equal(store.cleanupStaleMistakes(new Set(['q1'])), true);
   assert.deepEqual(Object.keys(store.getData().mistakes), ['q1']);
 });
+
+test('resetProgressKeepTheme clears progress while preserving selected theme', () => {
+  const store = createProgressStore(memoryAdapter());
+  store.setTheme('dark');
+  store.recordBestResult('mod', 'easy', { correct: 8, total: 10, percentage: 80 }, '2026-01-01T00:00:00.000Z');
+  store.setLastPracticed('mod', '2026-01-02');
+  store.addMistake(question, '2026-01-03T00:00:00.000Z');
+
+  store.resetProgressKeepTheme();
+
+  assert.deepEqual(store.getData(), {
+    version: SCHEMA_VERSION,
+    bestResults: {},
+    mistakes: {},
+    lastPracticed: {},
+    theme: 'dark',
+  });
+});
