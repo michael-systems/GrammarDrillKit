@@ -7,7 +7,10 @@
   --line: #dbe3ef;
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
-  --primary-text: #ffffff;
+  --primary-button-bg: var(--primary);
+  --primary-button-hover: var(--primary-dark);
+  --primary-button-text: #ffffff;
+  --badge-text: var(--primary-dark);
   --success: #15803d;
   --danger: #b91c1c;
   --soft: #eef4ff;
@@ -25,9 +28,12 @@
   --text: #e5e7eb;
   --muted: #a7b0c0;
   --line: #334155;
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --primary-text: #ffffff;
+  --primary: #60a5fa;
+  --primary-dark: #93c5fd;
+  --primary-button-bg: #1d4ed8;
+  --primary-button-hover: #1e40af;
+  --primary-button-text: #ffffff;
+  --badge-text: #bfdbfe;
   --success: #4ade80;
   --danger: #fb7185;
   --soft: #172554;
@@ -84,7 +90,7 @@ h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -104,15 +110,16 @@ select {
 button {
   border: 0;
   border-radius: 999px;
-  background: var(--primary);
-  color: var(--primary-text);
+  background: var(--primary-button-bg);
+  color: var(--primary-button-text);
   cursor: pointer;
   font-weight: 700;
   padding: 10px 18px;
 }
-button:hover { background: var(--primary-dark); }
+button:hover { background: var(--primary-button-hover); }
 button.secondary { background: var(--secondary); color: var(--text); }
 button.secondary:hover { background: var(--secondary-hover); }
+button.danger-action { margin-left: auto; }
 button.option {
   width: 100%;
   border-radius: 12px;
@@ -194,7 +201,7 @@ button:disabled { cursor: not-allowed; opacity: 0.7; }
   display: inline-block;
   border-radius: 999px;
   background: var(--soft);
-  color: var(--primary-dark);
+  color: var(--badge-text);
   font-weight: 700;
   padding: 4px 10px;
   margin-bottom: 10px;

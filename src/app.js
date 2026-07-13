@@ -1,5 +1,6 @@
 import { modules, getModuleById } from './module-registry.js';
-import { calculateScore, checkAnswer, createSession, prepareQuestion } from './quiz-engine.js';
+import { calculateScore, checkAnswer, prepareQuestion } from './quiz-engine.js';
+import { MODE_LABELS, SESSION_MODES, planSession } from './session-planner.js';
 import { formatLevel, shuffleArray } from './utilities.js';
 import { createBrowserProgressStore, THEMES } from './storage.js';
 
@@ -15,7 +16,9 @@ const state = {
   showExample: false,
   mode: 'practice',
   moduleId: null,
+  moduleIds: [],
   level: null,
+  topic: null,
 };
 
 function appendTextElement(parent, tagName, text, className) {
@@ -113,6 +116,20 @@ function renderSelection() {
   const controls = document.createElement('div');
   controls.className = 'controls';
 
+  const modeField = createField('Mode', 'mode');
+  const modeSelect = modeField.querySelector('select');
+  [
+    [SESSION_MODES.practice, 'Practice'],
+    [SESSION_MODES.mixed, 'Mixed'],
+    [SESSION_MODES.exam, 'Exam'],
+    [SESSION_MODES.focused, 'Focused Practice'],
+  ].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    modeSelect.append(option);
+  });
+
   const moduleField = createField('Module', 'module');
   const moduleSelect = moduleField.querySelector('select');
   modules.forEach((module) => {
@@ -131,6 +148,9 @@ function renderSelection() {
     levelSelect.append(option);
   });
 
+  const topicField = createField('Topic', 'topic');
+  const topicSelect = topicField.querySelector('select');
+
   const sizeField = createField('Session size', 'size');
   const sizeSelect = sizeField.querySelector('select');
   [['10', '10'], ['20', '20'], ['50', '50'], ['all', 'All']].forEach(([value, label]) => {
@@ -140,7 +160,7 @@ function renderSelection() {
     sizeSelect.append(option);
   });
 
-  controls.append(moduleField, levelField, sizeField);
+  controls.append(modeField, moduleField, topicField, levelField, sizeField);
   const summary = document.createElement('div');
   summary.id = 'module-summary';
   summary.className = 'module-summary';
@@ -151,7 +171,8 @@ function renderSelection() {
 
   const buttonRow = document.createElement('div');
   buttonRow.className = 'button-row';
-  buttonRow.append(createButton('Start practice', { type: 'submit' }));
+  const startButton = createButton('Start practice', { type: 'submit' });
+  buttonRow.append(startButton);
   const reviewButton = createButton('Review mistakes', {
     id: 'review-mistakes',
     className: 'secondary',
@@ -166,16 +187,54 @@ function renderSelection() {
   form.append(topActions, controls, summary, progress, buttonRow);
   app.append(form);
 
+  const rebuildTopicOptions = () => {
+    const selectedModule = getModuleById(moduleSelect.value);
+    const previousTopic = topicSelect.value;
+    topicSelect.replaceChildren();
+    selectedModule.topics.forEach((topic) => {
+      const option = document.createElement('option');
+      option.value = topic.id;
+      option.textContent = topic.title;
+      topicSelect.append(option);
+    });
+    if (selectedModule.topics.some((topic) => topic.id === previousTopic)) {
+      topicSelect.value = previousTopic;
+    }
+  };
+
+  const updateModeControls = () => {
+    const isMixed = modeSelect.value === SESSION_MODES.mixed;
+    const isFocused = modeSelect.value === SESSION_MODES.focused;
+    moduleField.hidden = isMixed;
+    moduleSelect.disabled = isMixed;
+    topicField.hidden = !isFocused;
+    topicSelect.disabled = !isFocused;
+    rebuildTopicOptions();
+    startButton.textContent = modeSelect.value === SESSION_MODES.exam ? 'Start exam' : 'Start practice';
+  };
+
   const updateSummary = () => {
+    updateModeControls();
     const selectedModule = getModuleById(moduleSelect.value);
     const data = progressStore.getData();
     const totalMistakes = Object.keys(data.mistakes).length;
     summary.replaceChildren();
     progress.replaceChildren();
-    appendTextElement(summary, 'h2', selectedModule.metadata.title);
-    appendTextElement(summary, 'p', selectedModule.metadata.description);
+    if (modeSelect.value === SESSION_MODES.mixed) {
+      appendTextElement(summary, 'h2', 'Mixed Practice');
+      appendTextElement(summary, 'p', 'Questions are drawn from all registered modules.');
+    } else {
+      appendTextElement(summary, 'h2', selectedModule.metadata.title);
+      appendTextElement(summary, 'p', selectedModule.metadata.description);
+    }
     const topicSummary = selectedModule.topics.map((topic) => topic.title).join(', ');
-    appendTextElement(summary, 'p', `Topics: ${topicSummary}`, 'muted');
+    if (modeSelect.value !== SESSION_MODES.mixed) {
+      appendTextElement(summary, 'p', `Topics: ${topicSummary}`, 'muted');
+      if (modeSelect.value === SESSION_MODES.focused) {
+        const currentTopic = selectedModule.topics.find((topic) => topic.id === topicSelect.value);
+        appendTextElement(summary, 'p', `Focused topic: ${currentTopic?.title ?? 'Select a topic'}`, 'muted');
+      }
+    }
     const best = data.bestResults[selectedModule.metadata.id]?.[levelSelect.value];
     appendTextElement(progress, 'h3', 'Progress');
     const bestSummary = best
@@ -212,29 +271,32 @@ function renderSelection() {
       );
     }
   };
+  modeSelect.addEventListener('change', updateSummary);
   moduleSelect.addEventListener('change', updateSummary);
+  topicSelect.addEventListener('change', updateSummary);
   levelSelect.addEventListener('change', updateSummary);
   updateSummary();
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const formData = new FormData(form);
-    const selectedModule = getModuleById(formData.get('module'));
-    const questions = selectedModule.questions.map((question) => ({
-      ...question,
-      moduleId: selectedModule.metadata.id,
-    }));
-    const session = createSession(questions, {
+    const mode = formData.get('mode');
+    const selectedModule = mode === SESSION_MODES.mixed ? null : getModuleById(formData.get('module'));
+    const plan = planSession(modules, {
+      mode,
+      moduleId: formData.get('module'),
+      topicId: formData.get('topic'),
       level: formData.get('level'),
       size: formData.get('size'),
     });
 
-    startSession(
-      session,
-      'practice',
-      selectedModule.metadata.id,
-      formData.get('level'),
-    );
+    startSession(plan.session, {
+      mode,
+      moduleId: selectedModule?.metadata.id ?? null,
+      moduleIds: plan.moduleIds,
+      level: formData.get('level'),
+      topic: plan.topic,
+    });
   });
   reviewButton.addEventListener('click', () => {
     const formData = new FormData(form);
@@ -244,7 +306,7 @@ function renderSelection() {
     const mistakes = shuffleArray(getMistakeQuestions())
       .slice(0, reviewSize)
       .map((question) => prepareQuestion(question));
-    startSession(mistakes, 'review', null, null);
+    startSession(mistakes, { mode: 'review', moduleId: null, moduleIds: [] });
   });
   resetButton.addEventListener('click', () => {
     const confirmed = globalThis.confirm(
@@ -258,7 +320,7 @@ function renderSelection() {
   });
 }
 
-function startSession(session, mode, moduleId, level) {
+function startSession(session, { mode, moduleId = null, moduleIds = [], level = null, topic = null }) {
   Object.assign(state, {
     session,
     currentIndex: 0,
@@ -269,7 +331,9 @@ function startSession(session, mode, moduleId, level) {
     showExample: false,
     mode,
     moduleId,
+    moduleIds,
     level,
+    topic,
   });
   renderQuestion();
 }
@@ -307,7 +371,7 @@ function renderQuestion() {
       'p',
       state.mode === 'review'
         ? 'Great work — your Mistakes Review list is empty.'
-        : 'Try another difficulty or module.',
+        : 'Try another difficulty, module, or topic.',
       'muted',
     );
 
@@ -319,14 +383,13 @@ function renderQuestion() {
   }
 
   const question = state.session[state.currentIndex];
-  const modePrefix = state.mode === 'review' ? 'Mistakes Review · ' : '';
-  appendTextElement(
-    app,
-    'div',
-    `${modePrefix}Question ${state.currentIndex + 1} of ${state.session.length} · ${formatLevel(question.level)}`,
-    'progress',
-  );
-  appendTextElement(app, 'span', question.topic.replaceAll('-', ' '), 'badge');
+  const modeLabel = state.mode === 'review' ? 'Mistakes Review' : MODE_LABELS[state.mode];
+  const progressText = `${modeLabel} · Question ${state.currentIndex + 1} of ${state.session.length} · ${formatLevel(question.level)}`;
+  appendTextElement(app, 'div', progressText, 'progress');
+  if (state.topic) {
+    appendTextElement(app, 'p', `Topic: ${state.topic.title}`, 'muted');
+  }
+  appendTextElement(app, 'span', state.topic?.title ?? question.topic.replaceAll('-', ' '), 'badge');
   appendTextElement(app, 'div', question.prompt, 'prompt');
 
   const options = document.createElement('div');
@@ -335,11 +398,12 @@ function renderQuestion() {
   question.options.forEach((option, index) => {
     const classes = ['option'];
 
-    if (state.answered && option === question.answer) {
+    if (state.answered && state.mode !== SESSION_MODES.exam && option === question.answer) {
       classes.push('correct');
     }
 
     const isIncorrectSelection = state.answered
+      && state.mode !== SESSION_MODES.exam
       && option === state.lastResult?.selectedAnswer
       && !state.lastResult.isCorrect;
 
@@ -366,16 +430,45 @@ function renderQuestion() {
   });
   dontKnowButton.addEventListener('click', () => answerQuestion(null));
   buttonRow.append(dontKnowButton);
+  buttonRow.append(createEndSessionButton());
   app.append(buttonRow);
 
   const feedbackSlot = document.createElement('div');
   feedbackSlot.id = 'feedback-slot';
 
   if (state.answered) {
-    feedbackSlot.append(createFeedback(question));
+    feedbackSlot.append(state.mode === SESSION_MODES.exam ? createExamFeedback() : createFeedback(question));
   }
 
   app.append(feedbackSlot);
+}
+
+
+function createEndSessionButton() {
+  const button = createButton('End session', { className: 'secondary danger-action', type: 'button' });
+  button.addEventListener('click', () => {
+    const message = state.mode === SESSION_MODES.exam
+      ? 'End this Exam? Your unfinished Exam answers and result will be discarded.'
+      : 'End this session? Completed answer and mistake updates will remain, but no session result will be saved.';
+    if (globalThis.confirm(message)) {
+      renderSelection();
+    }
+  });
+  return button;
+}
+
+function createExamFeedback() {
+  const feedback = document.createElement('section');
+  feedback.className = 'feedback neutral';
+  appendTextElement(feedback, 'h2', 'Answer recorded');
+  appendTextElement(feedback, 'p', 'Continue when you are ready.', 'muted');
+  const buttonRow = document.createElement('div');
+  buttonRow.className = 'button-row';
+  const nextButton = createButton(state.currentIndex === state.session.length - 1 ? 'Finish' : 'Next', { id: 'next' });
+  nextButton.addEventListener('click', nextQuestion);
+  buttonRow.append(nextButton, createEndSessionButton());
+  feedback.append(buttonRow);
+  return feedback;
 }
 
 function getReviewFeedbackMessage() {
@@ -450,7 +543,7 @@ function createFeedback(question) {
     id: 'next',
   });
   nextButton.addEventListener('click', nextQuestion);
-  buttonRow.append(nextButton);
+  buttonRow.append(nextButton, createEndSessionButton());
   feedback.append(buttonRow);
 
   return feedback;
@@ -466,7 +559,7 @@ function answerQuestion(selectedAnswer) {
   state.results.push(state.lastResult);
   state.reviewOutcome = null;
 
-  if (state.mode === 'practice' && !state.lastResult.isCorrect) {
+  if ([SESSION_MODES.practice, SESSION_MODES.mixed, SESSION_MODES.focused].includes(state.mode) && !state.lastResult.isCorrect) {
     progressStore.addMistake(question);
   }
 
@@ -500,8 +593,21 @@ function renderResult() {
   clearApp();
   const score = calculateScore(state.results);
 
-  if (state.mode === 'practice') {
+  if (state.mode === SESSION_MODES.practice) {
     progressStore.recordBestResult(state.moduleId, state.level, score);
+    progressStore.setLastPracticed(state.moduleId);
+  }
+
+  if ([SESSION_MODES.mixed, SESSION_MODES.focused].includes(state.mode)) {
+    state.moduleIds.forEach((moduleId) => progressStore.setLastPracticed(moduleId));
+  }
+
+  if (state.mode === SESSION_MODES.exam) {
+    state.results.forEach((answerResult, index) => {
+      if (!answerResult.isCorrect) {
+        progressStore.addMistake(state.session[index]);
+      }
+    });
     progressStore.setLastPracticed(state.moduleId);
   }
 
@@ -511,8 +617,11 @@ function renderResult() {
   appendTextElement(
     result,
     'h2',
-    state.mode === 'review' ? 'Mistakes Review complete' : 'Session complete',
+    state.mode === 'review' ? 'Mistakes Review complete' : `${MODE_LABELS[state.mode]} complete`,
   );
+  if (state.topic) {
+    appendTextElement(result, 'p', `Topic: ${state.topic.title}`, 'muted');
+  }
   appendTextElement(result, 'p', `${score.correct}/${score.total}`, 'score');
   appendTextElement(result, 'p', `${score.percentage}% correct`);
 
