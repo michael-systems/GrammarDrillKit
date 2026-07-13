@@ -16,19 +16,21 @@ const question = { id: 'q1', moduleId: 'mod', level: 'easy' };
 test('loads default storage state when storage is empty', () => {
   const adapter = memoryAdapter();
   const store = createProgressStore(adapter);
-  assert.deepEqual(store.getData(), { version: SCHEMA_VERSION, bestResults: {}, mistakes: {}, lastPracticed: {}, theme: null });
+  assert.deepEqual(store.getData(), { version: SCHEMA_VERSION, bestResults: {}, mistakes: {}, lastPracticed: {}, theme: null, interfaceSize: 'medium' });
 });
 
 test('serializes and restores valid progress', () => {
   const adapter = memoryAdapter();
   const store = createProgressStore(adapter);
   store.setTheme('dark');
+  store.setInterfaceSize('compact');
   store.recordBestResult('mod', 'easy', { correct: 8, total: 10, percentage: 80 }, '2026-01-01T00:00:00.000Z');
   store.setLastPracticed('mod', '2026-01-02');
   store.addMistake(question, '2026-01-03T00:00:00.000Z');
 
   const restored = createProgressStore(adapter).getData();
   assert.equal(restored.theme, 'dark');
+  assert.equal(restored.interfaceSize, 'compact');
   assert.deepEqual(restored.bestResults.mod.easy, { correct: 8, total: 10, percentage: 80, completedAt: '2026-01-01T00:00:00.000Z' });
   assert.equal(restored.lastPracticed.mod, '2026-01-02');
   assert.equal(restored.mistakes.q1.correctReviewCount, 0);
@@ -38,6 +40,19 @@ test('recovers from malformed stored data', () => {
   const adapter = memoryAdapter({ [STORAGE_KEY]: '{not json' });
   const store = createProgressStore(adapter);
   assert.deepEqual(store.getData().mistakes, {});
+  assert.equal(store.getData().interfaceSize, 'medium');
+});
+
+test('missing interfaceSize in schema 1 data defaults to medium', () => {
+  const adapter = memoryAdapter({ [STORAGE_KEY]: JSON.stringify({ version: SCHEMA_VERSION, bestResults: {}, mistakes: {}, lastPracticed: {}, theme: 'light' }) });
+  const store = createProgressStore(adapter);
+  assert.equal(store.getData().interfaceSize, 'medium');
+});
+
+test('invalid interfaceSize sanitizes to medium', () => {
+  const adapter = memoryAdapter({ [STORAGE_KEY]: JSON.stringify({ version: SCHEMA_VERSION, bestResults: {}, mistakes: {}, lastPracticed: {}, theme: 'dark', interfaceSize: 'tiny' }) });
+  const store = createProgressStore(adapter);
+  assert.equal(store.getData().interfaceSize, 'medium');
 });
 
 test('compares best scores by percentage then question count', () => {
@@ -85,9 +100,10 @@ test('stale question cleanup removes missing question IDs', () => {
   assert.deepEqual(Object.keys(store.getData().mistakes), ['q1']);
 });
 
-test('resetProgressKeepTheme clears progress while preserving selected theme', () => {
+test('resetProgressKeepTheme clears progress while preserving selected theme and interface size', () => {
   const store = createProgressStore(memoryAdapter());
   store.setTheme('dark');
+  store.setInterfaceSize('large');
   store.recordBestResult('mod', 'easy', { correct: 8, total: 10, percentage: 80 }, '2026-01-01T00:00:00.000Z');
   store.setLastPracticed('mod', '2026-01-02');
   store.addMistake(question, '2026-01-03T00:00:00.000Z');
@@ -100,5 +116,6 @@ test('resetProgressKeepTheme clears progress while preserving selected theme', (
     mistakes: {},
     lastPracticed: {},
     theme: 'dark',
+    interfaceSize: 'large',
   });
 });

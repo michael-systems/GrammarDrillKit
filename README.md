@@ -1,6 +1,6 @@
 # Grammar Drill Kit
 
-Grammar Drill Kit is a lightweight static English grammar practice app for Russian-speaking learners who want to maintain and improve English from approximately A2 to C1. Iteration 3 adds Practice, Mixed Practice, Exam, Focused Practice, and Mistakes Review flows while keeping the app dependency-free and GitHub Pages-compatible.
+Grammar Drill Kit is a lightweight static English grammar practice app for Russian-speaking learners who want to maintain and improve English from approximately A2 to C1. Iteration 4 finishes the static product shell with Practice, Mixed Practice, Exam, Focused Practice, Mistakes Review, persistent interface-size presets, and responsive polish while keeping the app dependency-free and GitHub Pages-compatible.
 
 ## Use the app
 
@@ -22,12 +22,16 @@ Implemented now:
 - Exam mode records answers without immediate feedback and saves mistakes only when the exam is completed.
 - Focused Practice filters by module topic, difficulty, and size using topic IDs from the selected module.
 - Mistakes Review remains a separate action across all modules.
-- End session is available during every active flow; unfinished sessions do not save final results or last-practiced dates, while already-saved non-Exam mistake updates remain.
-- Persistent browser-only progress using `localStorage`: regular Practice best results by module and level, last practiced dates, saved mistakes, and selected theme.
+- End session is available exactly once in the active-session toolbar; unfinished sessions do not save final results or last-practiced dates, while already-saved non-Exam mistake updates remain.
+- Persistent browser-only progress using `localStorage`: regular Practice best results by module and level, last practiced dates, saved mistakes, selected theme, and selected interface size.
 - Mistakes Review across all modules, using stored question IDs and cleaning up stale IDs when module content changes.
 - Mistake mastery rule: the same mistake must be answered correctly twice consecutively in Mistakes Review before it is removed; a wrong answer or “I don’t know” resets that review counter.
-- Compact progress summary and a reset-progress action that keeps the selected theme.
-- Light/dark theme switching, saved only in the current browser.
+- Compact progress summary and a reset-progress action that keeps the selected theme and interface size.
+- Light/dark theme switching and four saved interface-size presets: Compact, Small, Medium, and Large. Medium is the default when no saved size exists.
+- Compact active-session layout with a shorter product header and a two-pane question/feedback workspace for Compact and Small desktop views.
+- Compact is designed to fit answered sessions at 1280 × 720 and 1366 × 768 desktop viewports; Small is designed to fit answered sessions at 1366 × 768. Expanded examples or future longer content may naturally require scrolling.
+- Responsive phone-width layout stacks controls and session panes into one column without fixed overlays or horizontal scrolling.
+- Subtle creator footer link: [Made by M](https://t.me/lifeforevery).
 - Practice, Mixed Practice, Focused Practice, and Mistakes Review show one question at a time with immediate feedback, correct answer, explanation, optional Russian translation, separate example reveal, next navigation, and final score.
 - Exam shows no per-question correctness, correct answer, explanation, translation, or example until the final score.
 - Dependency-free tests for quiz-engine, session-planner, and storage logic using Node's built-in test runner.
@@ -116,7 +120,7 @@ Question IDs should be stable and unique within the full app, for example `modal
 
 ## Developer local testing
 
-The public link above is the recommended path for normal learners. Developers testing a cloned repository locally should use a simple static server because the app uses native ES modules. From the repository root, run one of these commands:
+Normal users only need the GitHub Pages link above; no local server or installation is required for normal use. Developers testing a cloned repository locally should use a simple static server because the app uses native ES modules. From the repository root, run one of these commands:
 
 ```bash
 python3 -m http.server 8000

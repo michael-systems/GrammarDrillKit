@@ -2,7 +2,7 @@ import { modules, getModuleById } from './module-registry.js';
 import { calculateScore, checkAnswer, prepareQuestion } from './quiz-engine.js';
 import { MODE_LABELS, SESSION_MODES, planSession } from './session-planner.js';
 import { formatLevel, shuffleArray } from './utilities.js';
-import { createBrowserProgressStore, THEMES } from './storage.js';
+import { createBrowserProgressStore, THEMES, INTERFACE_SIZES, DEFAULT_INTERFACE_SIZE } from './storage.js';
 
 const app = document.querySelector('#app');
 const progressStore = createBrowserProgressStore();
@@ -52,6 +52,10 @@ function createButton(text, { id, className, disabled = false, type } = {}) {
   return button;
 }
 
+function setView(view) {
+  document.body.dataset.view = view;
+}
+
 function clearApp() {
   app.replaceChildren();
 }
@@ -59,6 +63,17 @@ function clearApp() {
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   progressStore.setTheme(theme);
+}
+
+function applyInterfaceSize(interfaceSize) {
+  const safeSize = INTERFACE_SIZES.includes(interfaceSize) ? interfaceSize : DEFAULT_INTERFACE_SIZE;
+  document.documentElement.dataset.size = safeSize;
+  progressStore.setInterfaceSize(safeSize);
+}
+
+function getCurrentInterfaceSize() {
+  const saved = progressStore.getData().interfaceSize;
+  return INTERFACE_SIZES.includes(saved) ? saved : DEFAULT_INTERFACE_SIZE;
 }
 
 function getCurrentTheme() {
@@ -89,6 +104,7 @@ function getMistakeQuestions() {
 }
 
 function renderSelection() {
+  setView('selection');
   clearApp();
 
   const form = document.createElement('form');
@@ -112,6 +128,28 @@ function renderSelection() {
   themeSelect.addEventListener('change', () => applyTheme(themeSelect.value));
   themeLabel.append(themeSelect);
   topActions.append(themeLabel);
+
+  const sizeLabel = document.createElement('label');
+  sizeLabel.className = 'theme-toggle';
+  sizeLabel.textContent = 'Interface size';
+  const interfaceSizeSelect = document.createElement('select');
+  interfaceSizeSelect.id = 'interface-size';
+  interfaceSizeSelect.name = 'interfaceSize';
+  [
+    ['compact', 'Compact'],
+    ['small', 'Small'],
+    ['medium', 'Medium'],
+    ['large', 'Large'],
+  ].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    interfaceSizeSelect.append(option);
+  });
+  interfaceSizeSelect.value = getCurrentInterfaceSize();
+  interfaceSizeSelect.addEventListener('change', () => applyInterfaceSize(interfaceSizeSelect.value));
+  sizeLabel.append(interfaceSizeSelect);
+  topActions.append(sizeLabel);
 
   const controls = document.createElement('div');
   controls.className = 'controls';
@@ -235,12 +273,16 @@ function renderSelection() {
         appendTextElement(summary, 'p', `Focused topic: ${currentTopic?.title ?? 'Select a topic'}`, 'muted');
       }
     }
-    const best = data.bestResults[selectedModule.metadata.id]?.[levelSelect.value];
     appendTextElement(progress, 'h3', 'Progress');
-    const bestSummary = best
-      ? `Best ${formatLevel(levelSelect.value)}: ${best.correct}/${best.total} (${best.percentage}%)`
-      : `Best ${formatLevel(levelSelect.value)}: not yet recorded`;
-    appendTextElement(progress, 'p', bestSummary, 'muted');
+    if (modeSelect.value === SESSION_MODES.mixed) {
+      appendTextElement(progress, 'p', 'Mixed Practice uses all registered modules at the selected difficulty.', 'muted');
+    } else {
+      const best = data.bestResults[selectedModule.metadata.id]?.[levelSelect.value];
+      const bestSummary = best
+        ? `Best ${formatLevel(levelSelect.value)}: ${best.correct}/${best.total} (${best.percentage}%)`
+        : `Best ${formatLevel(levelSelect.value)}: not yet recorded`;
+      appendTextElement(progress, 'p', bestSummary, 'muted');
+    }
     appendTextElement(progress, 'p', `Total mistakes: ${totalMistakes}`, 'muted');
 
     const mistakeList = document.createElement('dl');
@@ -262,7 +304,7 @@ function renderSelection() {
 
     progress.append(mistakeList);
 
-    if (data.lastPracticed[selectedModule.metadata.id]) {
+    if (modeSelect.value !== SESSION_MODES.mixed && data.lastPracticed[selectedModule.metadata.id]) {
       appendTextElement(
         progress,
         'p',
@@ -310,7 +352,7 @@ function renderSelection() {
   });
   resetButton.addEventListener('click', () => {
     const confirmed = globalThis.confirm(
-      'Reset all scores, mistakes, and practice dates? Your theme will be kept.',
+      'Reset all scores, mistakes, and practice dates? Your theme and interface size will be kept.',
     );
 
     if (confirmed) {
@@ -355,6 +397,7 @@ function createField(labelText, selectId) {
 }
 
 function renderQuestion() {
+  setView('session');
   clearApp();
 
   if (state.session.length === 0) {
@@ -385,12 +428,22 @@ function renderQuestion() {
   const question = state.session[state.currentIndex];
   const modeLabel = state.mode === 'review' ? 'Mistakes Review' : MODE_LABELS[state.mode];
   const progressText = `${modeLabel} · Question ${state.currentIndex + 1} of ${state.session.length} · ${formatLevel(question.level)}`;
-  appendTextElement(app, 'div', progressText, 'progress');
+  const toolbar = document.createElement('div');
+  toolbar.className = 'session-toolbar';
+  appendTextElement(toolbar, 'div', progressText, 'progress');
+  toolbar.append(createEndSessionButton());
+  app.append(toolbar);
+
+  const workspace = document.createElement('div');
+  workspace.className = `session-workspace${state.answered ? ' answered' : ''}`;
+  const questionPane = document.createElement('section');
+  questionPane.className = 'question-pane';
+  questionPane.setAttribute('aria-label', 'Question');
   if (state.topic) {
-    appendTextElement(app, 'p', `Topic: ${state.topic.title}`, 'muted');
+    appendTextElement(questionPane, 'p', `Topic: ${state.topic.title}`, 'muted compact-topic');
   }
-  appendTextElement(app, 'span', state.topic?.title ?? question.topic.replaceAll('-', ' '), 'badge');
-  appendTextElement(app, 'div', question.prompt, 'prompt');
+  appendTextElement(questionPane, 'span', state.topic?.title ?? question.topic.replaceAll('-', ' '), 'badge');
+  appendTextElement(questionPane, 'div', question.prompt, 'prompt');
 
   const options = document.createElement('div');
   options.className = 'options';
@@ -418,7 +471,7 @@ function renderQuestion() {
     button.addEventListener('click', () => answerQuestion(question.options[index]));
     options.append(button);
   });
-  app.append(options);
+  questionPane.append(options);
 
   const buttonRow = document.createElement('div');
   buttonRow.className = 'button-row';
@@ -430,17 +483,18 @@ function renderQuestion() {
   });
   dontKnowButton.addEventListener('click', () => answerQuestion(null));
   buttonRow.append(dontKnowButton);
-  buttonRow.append(createEndSessionButton());
-  app.append(buttonRow);
-
-  const feedbackSlot = document.createElement('div');
-  feedbackSlot.id = 'feedback-slot';
+  questionPane.append(buttonRow);
+  workspace.append(questionPane);
 
   if (state.answered) {
+    const feedbackSlot = document.createElement('div');
+    feedbackSlot.id = 'feedback-slot';
+    feedbackSlot.className = 'feedback-pane';
     feedbackSlot.append(state.mode === SESSION_MODES.exam ? createExamFeedback() : createFeedback(question));
+    workspace.append(feedbackSlot);
   }
 
-  app.append(feedbackSlot);
+  app.append(workspace);
 }
 
 
@@ -466,7 +520,7 @@ function createExamFeedback() {
   buttonRow.className = 'button-row';
   const nextButton = createButton(state.currentIndex === state.session.length - 1 ? 'Finish' : 'Next', { id: 'next' });
   nextButton.addEventListener('click', nextQuestion);
-  buttonRow.append(nextButton, createEndSessionButton());
+  buttonRow.append(nextButton);
   feedback.append(buttonRow);
   return feedback;
 }
@@ -543,7 +597,7 @@ function createFeedback(question) {
     id: 'next',
   });
   nextButton.addEventListener('click', nextQuestion);
-  buttonRow.append(nextButton, createEndSessionButton());
+  buttonRow.append(nextButton);
   feedback.append(buttonRow);
 
   return feedback;
@@ -590,6 +644,7 @@ function nextQuestion() {
 }
 
 function renderResult() {
+  setView('result');
   clearApp();
   const score = calculateScore(state.results);
 
@@ -632,4 +687,5 @@ function renderResult() {
 }
 
 applyTheme(getCurrentTheme());
+applyInterfaceSize(getCurrentInterfaceSize());
 renderSelection();
