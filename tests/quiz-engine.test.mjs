@@ -46,3 +46,30 @@ test('questions with shuffleOptions false still receive copied options', () => {
   assert.notEqual(prepared.options, questions[2].options);
   assert.deepEqual(prepared.options, questions[2].options);
 });
+
+
+test('checking quoted and punctuated answers does not mutate question values', () => {
+  const quotedQuestion = {
+    id: 'quoted',
+    type: 'multiple_choice',
+    level: 'medium',
+    topic: 'punctuation',
+    prompt: 'Choose the exact phrase.',
+    options: ['He said "yes" & left.', "I don't know", '<not this>'],
+    answer: 'He said "yes" & left.',
+    shuffleOptions: true,
+  };
+  const original = structuredClone(quotedQuestion);
+
+  assert.deepEqual(checkAnswer(quotedQuestion, 'He said "yes" & left.'), {
+    isCorrect: true,
+    selectedAnswer: 'He said "yes" & left.',
+    correctAnswer: 'He said "yes" & left.',
+  });
+  assert.deepEqual(checkAnswer(quotedQuestion, '<not this>'), {
+    isCorrect: false,
+    selectedAnswer: '<not this>',
+    correctAnswer: 'He said "yes" & left.',
+  });
+  assert.deepEqual(quotedQuestion, original);
+});
