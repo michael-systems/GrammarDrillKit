@@ -5,25 +5,84 @@ import { formatLevel } from './utilities.js';
 const app = document.querySelector('#app');
 const state = { session: [], currentIndex: 0, results: [], answered: false, lastResult: null, showExample: false };
 
-function renderSelection() {
-  const moduleOptions = modules.map((module) => `<option value="${module.metadata.id}">${module.metadata.title}</option>`).join('');
-  app.innerHTML = `
-    <form id="setup-form">
-      <div class="controls">
-        <div class="field"><label for="module">Module</label><select id="module" name="module">${moduleOptions}</select></div>
-        <div class="field"><label for="level">Difficulty</label><select id="level" name="level"><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></div>
-        <div class="field"><label for="size">Session size</label><select id="size" name="size"><option value="10">10</option><option value="all">All</option></select></div>
-      </div>
-      <div id="module-summary" class="module-summary"></div>
-      <button type="submit">Start</button>
-    </form>`;
+function appendTextElement(parent, tagName, text, className) {
+  const element = document.createElement(tagName);
+  if (className) element.className = className;
+  element.textContent = text;
+  parent.append(element);
+  return element;
+}
 
-  const form = document.querySelector('#setup-form');
-  const moduleSelect = document.querySelector('#module');
-  const summary = document.querySelector('#module-summary');
+function createButton(text, { id, className, disabled = false, type } = {}) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  if (id) button.id = id;
+  if (className) button.className = className;
+  if (disabled) button.disabled = true;
+  if (type) button.type = type;
+  return button;
+}
+
+function clearApp() {
+  app.replaceChildren();
+}
+
+function renderSelection() {
+  clearApp();
+
+  const form = document.createElement('form');
+  form.id = 'setup-form';
+
+  const controls = document.createElement('div');
+  controls.className = 'controls';
+
+  const moduleField = createField('Module', 'module');
+  const moduleSelect = moduleField.querySelector('select');
+  modules.forEach((module) => {
+    const option = document.createElement('option');
+    option.value = module.metadata.id;
+    option.textContent = module.metadata.title;
+    moduleSelect.append(option);
+  });
+
+  const levelField = createField('Difficulty', 'level');
+  const levelSelect = levelField.querySelector('select');
+  [
+    ['easy', 'Easy'],
+    ['medium', 'Medium'],
+    ['hard', 'Hard'],
+  ].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    levelSelect.append(option);
+  });
+
+  const sizeField = createField('Session size', 'size');
+  const sizeSelect = sizeField.querySelector('select');
+  [
+    ['10', '10'],
+    ['all', 'All'],
+  ].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    sizeSelect.append(option);
+  });
+
+  controls.append(moduleField, levelField, sizeField);
+  const summary = document.createElement('div');
+  summary.id = 'module-summary';
+  summary.className = 'module-summary';
+  form.append(controls, summary, createButton('Start', { type: 'submit' }));
+  app.append(form);
+
   const updateSummary = () => {
     const selectedModule = getModuleById(moduleSelect.value);
-    summary.innerHTML = `<h2>${selectedModule.metadata.title}</h2><p>${selectedModule.metadata.description}</p><p class="muted">Topics: ${selectedModule.topics.map((topic) => topic.title).join(', ')}</p>`;
+    summary.replaceChildren();
+    appendTextElement(summary, 'h2', selectedModule.metadata.title);
+    appendTextElement(summary, 'p', selectedModule.metadata.description);
+    appendTextElement(summary, 'p', `Topics: ${selectedModule.topics.map((topic) => topic.title).join(', ')}`, 'muted');
   };
   moduleSelect.addEventListener('change', updateSummary);
   updateSummary();
@@ -42,42 +101,106 @@ function renderSelection() {
   });
 }
 
+function createField(labelText, selectId) {
+  const field = document.createElement('div');
+  field.className = 'field';
+  const label = document.createElement('label');
+  label.htmlFor = selectId;
+  label.textContent = labelText;
+  const select = document.createElement('select');
+  select.id = selectId;
+  select.name = selectId;
+  field.append(label, select);
+  return field;
+}
+
 function renderQuestion() {
+  clearApp();
+
   if (state.session.length === 0) {
-    app.innerHTML = `<div class="result"><h2>No questions found</h2><p class="muted">Try another difficulty or module.</p><button id="back">Return to module selection</button></div>`;
-    document.querySelector('#back').addEventListener('click', renderSelection);
+    const result = document.createElement('div');
+    result.className = 'result';
+    appendTextElement(result, 'h2', 'No questions found');
+    appendTextElement(result, 'p', 'Try another difficulty or module.', 'muted');
+    const backButton = createButton('Return to module selection', { id: 'back' });
+    backButton.addEventListener('click', renderSelection);
+    result.append(backButton);
+    app.append(result);
     return;
   }
 
   const question = state.session[state.currentIndex];
-  const options = question.options.map((option) => {
+  appendTextElement(app, 'div', `Question ${state.currentIndex + 1} of ${state.session.length} · ${formatLevel(question.level)}`, 'progress');
+  appendTextElement(app, 'span', question.topic.replaceAll('-', ' '), 'badge');
+  appendTextElement(app, 'div', question.prompt, 'prompt');
+
+  const options = document.createElement('div');
+  options.className = 'options';
+  question.options.forEach((option, index) => {
     const classes = ['option'];
     if (state.answered && option === question.answer) classes.push('correct');
     if (state.answered && option === state.lastResult?.selectedAnswer && !state.lastResult.isCorrect) classes.push('incorrect');
-    return `<button class="${classes.join(' ')}" data-answer="${option}" ${state.answered ? 'disabled' : ''}>${option}</button>`;
-  }).join('');
-
-  app.innerHTML = `
-    <div class="progress">Question ${state.currentIndex + 1} of ${state.session.length} · ${formatLevel(question.level)}</div>
-    <span class="badge">${question.topic.replaceAll('-', ' ')}</span>
-    <div class="prompt">${question.prompt}</div>
-    <div class="options">${options}</div>
-    <div class="button-row"><button class="secondary" id="dont-know" ${state.answered ? 'disabled' : ''}>I don't know</button></div>
-    <div id="feedback-slot">${state.answered ? feedbackTemplate(question) : ''}</div>`;
-
-  document.querySelectorAll('[data-answer]').forEach((button) => {
-    button.addEventListener('click', () => answerQuestion(button.dataset.answer));
+    const button = createButton(option, { className: classes.join(' '), disabled: state.answered });
+    button.dataset.optionIndex = String(index);
+    button.addEventListener('click', () => answerQuestion(question.options[index]));
+    options.append(button);
   });
-  document.querySelector('#dont-know').addEventListener('click', () => answerQuestion(null));
-  document.querySelector('#show-example')?.addEventListener('click', () => { state.showExample = true; renderQuestion(); });
-  document.querySelector('#next')?.addEventListener('click', nextQuestion);
+  app.append(options);
+
+  const buttonRow = document.createElement('div');
+  buttonRow.className = 'button-row';
+  const dontKnowButton = createButton("I don't know", { id: 'dont-know', className: 'secondary', disabled: state.answered });
+  dontKnowButton.addEventListener('click', () => answerQuestion(null));
+  buttonRow.append(dontKnowButton);
+  app.append(buttonRow);
+
+  const feedbackSlot = document.createElement('div');
+  feedbackSlot.id = 'feedback-slot';
+  if (state.answered) feedbackSlot.append(createFeedback(question));
+  app.append(feedbackSlot);
 }
 
-function feedbackTemplate(question) {
+function createFeedback(question) {
   const result = state.lastResult;
-  const status = result.isCorrect ? 'Correct' : 'Incorrect';
-  const example = state.showExample ? `<p><strong>Example:</strong> ${question.example}</p>` : '<button class="secondary" id="show-example">Show example</button>';
-  return `<section class="feedback ${result.isCorrect ? 'correct' : 'incorrect'}"><h2>${status}</h2><p><strong>Correct answer:</strong> ${result.correctAnswer}</p><p>${question.explanation}</p>${question.translation ? `<p><strong>Translation:</strong> ${question.translation}</p>` : ''}${example}<div class="button-row"><button id="next">${state.currentIndex === state.session.length - 1 ? 'Finish' : 'Next'}</button></div></section>`;
+  const feedback = document.createElement('section');
+  feedback.className = `feedback ${result.isCorrect ? 'correct' : 'incorrect'}`;
+  appendTextElement(feedback, 'h2', result.isCorrect ? 'Correct' : 'Incorrect');
+
+  const answer = document.createElement('p');
+  const answerLabel = document.createElement('strong');
+  answerLabel.textContent = 'Correct answer:';
+  answer.append(answerLabel, ` ${result.correctAnswer}`);
+  feedback.append(answer);
+
+  appendTextElement(feedback, 'p', question.explanation);
+
+  if (question.translation) {
+    const translation = document.createElement('p');
+    const translationLabel = document.createElement('strong');
+    translationLabel.textContent = 'Translation:';
+    translation.append(translationLabel, ` ${question.translation}`);
+    feedback.append(translation);
+  }
+
+  if (state.showExample) {
+    const example = document.createElement('p');
+    const exampleLabel = document.createElement('strong');
+    exampleLabel.textContent = 'Example:';
+    example.append(exampleLabel, ` ${question.example}`);
+    feedback.append(example);
+  } else {
+    const showExampleButton = createButton('Show example', { id: 'show-example', className: 'secondary' });
+    showExampleButton.addEventListener('click', () => { state.showExample = true; renderQuestion(); });
+    feedback.append(showExampleButton);
+  }
+
+  const buttonRow = document.createElement('div');
+  buttonRow.className = 'button-row';
+  const nextButton = createButton(state.currentIndex === state.session.length - 1 ? 'Finish' : 'Next', { id: 'next' });
+  nextButton.addEventListener('click', nextQuestion);
+  buttonRow.append(nextButton);
+  feedback.append(buttonRow);
+  return feedback;
 }
 
 function answerQuestion(selectedAnswer) {
@@ -102,9 +225,17 @@ function nextQuestion() {
 }
 
 function renderResult() {
+  clearApp();
   const score = calculateScore(state.results);
-  app.innerHTML = `<div class="result"><h2>Session complete</h2><p class="score">${score.correct}/${score.total}</p><p>${score.percentage}% correct</p><button id="back">Return to module selection</button></div>`;
-  document.querySelector('#back').addEventListener('click', renderSelection);
+  const result = document.createElement('div');
+  result.className = 'result';
+  appendTextElement(result, 'h2', 'Session complete');
+  appendTextElement(result, 'p', `${score.correct}/${score.total}`, 'score');
+  appendTextElement(result, 'p', `${score.percentage}% correct`);
+  const backButton = createButton('Return to module selection', { id: 'back' });
+  backButton.addEventListener('click', renderSelection);
+  result.append(backButton);
+  app.append(result);
 }
 
 renderSelection();
