@@ -8,10 +8,14 @@
       try {
         const stored = JSON.parse(localStorage.getItem('grammar-drill-kit-progress') || 'null');
         const savedTheme = stored && stored.version === 1 ? stored.theme : null;
+        const savedSize = stored && stored.version === 1 ? stored.interfaceSize : null;
+        const validSizes = ['compact', 'small', 'medium', 'large'];
         const theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.size = validSizes.includes(savedSize) ? savedSize : 'medium';
       } catch {
         document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.size = 'medium';
       }
     </script>
     <link rel="stylesheet" href="styles.css">
@@ -22,11 +26,14 @@
         <header class="app-header">
           <p class="eyebrow">English practice for Russian-speaking learners</p>
           <h1>Grammar Drill Kit</h1>
-          <p class="lede">Choose a module and practise one reusable quiz flow across focused grammar topics.</p>
+          <p class="lede">Choose a practice mode, difficulty, and session size for focused English grammar drills.</p>
         </header>
 
         <div id="app" aria-live="polite"></div>
       </section>
+      <footer class="creator-footer">
+        <a href="https://t.me/lifeforevery" target="_blank" rel="noopener noreferrer">Made by M</a>
+      </footer>
     </main>
 
     <script type="module" src="src/app.js"></script>

@@ -1,6 +1,8 @@
 export const STORAGE_KEY = 'grammar-drill-kit-progress';
 export const SCHEMA_VERSION = 1;
 export const THEMES = Object.freeze(['light', 'dark']);
+export const INTERFACE_SIZES = Object.freeze(['compact', 'small', 'medium', 'large']);
+export const DEFAULT_INTERFACE_SIZE = 'medium';
 
 function createDefaultData() {
   return {
@@ -9,6 +11,7 @@ function createDefaultData() {
     mistakes: {},
     lastPracticed: {},
     theme: null,
+    interfaceSize: DEFAULT_INTERFACE_SIZE,
   };
 }
 
@@ -18,6 +21,10 @@ function isPlainObject(value) {
 
 function sanitizeTheme(theme) {
   return THEMES.includes(theme) ? theme : null;
+}
+
+function sanitizeInterfaceSize(interfaceSize) {
+  return INTERFACE_SIZES.includes(interfaceSize) ? interfaceSize : DEFAULT_INTERFACE_SIZE;
 }
 
 function sanitizeBestResults(value) {
@@ -100,6 +107,7 @@ export function sanitizeData(value) {
     mistakes: sanitizeMistakes(value.mistakes),
     lastPracticed: sanitizeLastPracticed(value.lastPracticed),
     theme: sanitizeTheme(value.theme),
+    interfaceSize: sanitizeInterfaceSize(value.interfaceSize),
   };
 }
 
@@ -141,6 +149,10 @@ export function createProgressStore(adapter) {
     getData,
     setTheme(theme) {
       data.theme = sanitizeTheme(theme);
+      persist();
+    },
+    setInterfaceSize(interfaceSize) {
+      data.interfaceSize = sanitizeInterfaceSize(interfaceSize);
       persist();
     },
     recordBestResult(moduleId, level, score, completedAt = new Date().toISOString()) {
@@ -210,8 +222,10 @@ export function createProgressStore(adapter) {
     },
     resetProgressKeepTheme() {
       const theme = data.theme;
+      const interfaceSize = data.interfaceSize;
       data = createDefaultData();
       data.theme = theme;
+      data.interfaceSize = interfaceSize;
       persist();
     },
   };
