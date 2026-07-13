@@ -2,6 +2,14 @@
 
 Grammar Drill Kit is a lightweight static English grammar practice app for Russian-speaking learners who want to maintain and improve English from approximately A2 to C1. Iteration 2 builds on the first release and proves that one reusable quiz engine can power different learning modules without duplicating quiz logic.
 
+## Use the app
+
+Open the public GitHub Pages app in any modern browser:
+
+https://michael-systems.github.io/GrammarDrillKit/
+
+Normal learner usage requires no server, installation, terminal commands, download, account, or setup. Friends and learners can simply open the link and practice in the browser.
+
 ## Iteration 2 scope
 
 Implemented now:
@@ -98,9 +106,9 @@ The current app implements only multiple-choice questions:
 
 Question IDs should be stable and unique within the full app, for example `modal-verbs-006`.
 
-## Run locally
+## Developer local testing
 
-Because the app uses native ES modules, open it through a static server rather than directly from the filesystem. From the repository root, run one of these commands:
+The public link above is the recommended path for normal learners. Developers testing a cloned repository locally should use a simple static server because the app uses native ES modules. From the repository root, run one of these commands:
 
 ```bash
 python3 -m http.server 8000
