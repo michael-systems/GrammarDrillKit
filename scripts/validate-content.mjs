@@ -8,6 +8,7 @@ const blockedText = ['dis' + 'tractor', 'place' + 'holder', 'option-1', 'Item', 
 const FORBIDDEN = blockedText.map((text) => text === 'Item' ? /Item\s+\d+/i : new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
 const HTML = /<[^>]+>/;
 const CYRILLIC = /[\u0400-\u04FF]/;
+const PHRASAL_FORBIDDEN_EXPLANATIONS = ['matches the meaning', 'The example uses a past form', 'The example shows the form in context'];
 export const normalize = (value) => String(value).trim().toLowerCase().replace(/\s+/g, ' ');
 function countBy(items, key) { return items.reduce((acc, item) => { const value = typeof key === 'function' ? key(item) : item[key]; acc[value] = (acc[value] || 0) + 1; return acc; }, {}); }
 function fail(errors, message) { errors.push(message); }
@@ -61,10 +62,16 @@ function validatePhrasal(mod, errors) {
   for (const topic of REQUIRED_PHRASAL_TOPICS) if (!topicIds.includes(topic)) fail(errors, `Missing Phrasal Verbs topic ${topic}.`);
   const topicCounts = countBy(mod.questions, 'topic'); for (const topic of REQUIRED_PHRASAL_TOPICS) if ((topicCounts[topic] || 0) < 5 || (topicCounts[topic] || 0) > 30) fail(errors, `${topic} must contain 5-30 questions.`);
   const entries = new Set();
+  const donorKeys = new Set(mod.questions.map((q) => q.donorKey));
   for (let i = 1; i <= 150; i += 1) {
     const q = mod.questions[i - 1]; if (q?.id !== `phrasal-verbs-${String(i).padStart(3, '0')}`) fail(errors, `Expected phrasal-verbs-${String(i).padStart(3, '0')} at position ${i}.`);
   }
-  for (const q of mod.questions) entries.add(q.donorEntry);
+  for (const q of mod.questions) {
+    if (entries.has(q.donorEntry)) fail(errors, `Duplicate donorEntry ${q.donorEntry}.`);
+    entries.add(q.donorEntry);
+    for (const option of q.options || []) if (!donorKeys.has(option)) fail(errors, `${q.id} option ${option} is not a Phrasal Verbs donorKey.`);
+    for (const phrase of PHRASAL_FORBIDDEN_EXPLANATIONS) if (q.explanation.includes(phrase)) fail(errors, `${q.id} explanation contains old template phrase: ${phrase}.`);
+  }
   for (let i = 1; i <= 150; i += 1) if (!entries.has(i)) fail(errors, `Missing donorEntry ${i}.`);
 }
 export function summarize(registry = modules) { return registry.map((mod) => ({ id: mod.metadata.id, questionCount: mod.questions.length, levelCounts: countBy(mod.questions, 'level'), topicCounts: countBy(mod.questions, 'topic'), donorCoverage: mod.metadata.id === 'phrasal-verbs' ? `${Math.min(...mod.questions.map((q) => q.donorEntry))}-${Math.max(...mod.questions.map((q) => q.donorEntry))} (${new Set(mod.questions.map((q) => q.donorEntry)).size}/150)` : undefined })); }

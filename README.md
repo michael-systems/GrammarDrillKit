@@ -16,7 +16,8 @@ Implemented now:
 
 - Vanilla HTML, CSS, and JavaScript only.
 - Native ES modules that work on GitHub Pages.
-- Three demo modules: Phrasal Verbs, Conditionals, and Modal Verbs.
+- Phrasal Verbs as a complete 150-question donor-based module.
+- Conditionals and Modal Verbs as small demo modules pending their full content packs.
 - Multiple-choice Practice sessions with module, difficulty, and 10 / 20 / 50 / All session-size selection.
 - Mixed Practice draws from all registered modules at the selected difficulty and size.
 - Exam mode records answers without immediate feedback and saves mistakes only when the exam is completed.
@@ -38,7 +39,7 @@ Implemented now:
 
 Intentionally deferred:
 
-- Full question database.
+- Complete content packs for the remaining modules.
 - Text-input questions, although the engine reserves a `text_input` type constant for future use.
 - Backend, authentication, database, external APIs, packages, bundlers, and frameworks.
 

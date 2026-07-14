@@ -15,7 +15,9 @@ test('Phrasal Verbs donor import is complete and traceable', () => {
   assert.equal(phrasal.questions.length, 150);
   assert.deepEqual(countBy(phrasal.questions, 'level'), { easy: 50, medium: 50, hard: 50 });
   assert.deepEqual(phrasal.questions.map((q) => q.id), Array.from({ length: 150 }, (_, i) => `phrasal-verbs-${String(i + 1).padStart(3, '0')}`));
-  assert.deepEqual([...new Set(phrasal.questions.map((q) => q.donorEntry))].sort((a, b) => a - b), Array.from({ length: 150 }, (_, i) => i + 1));
+  const donorEntries = phrasal.questions.map((q) => q.donorEntry);
+  assert.equal(new Set(donorEntries).size, 150);
+  assert.deepEqual([...new Set(donorEntries)].sort((a, b) => a - b), Array.from({ length: 150 }, (_, i) => i + 1));
   for (const q of phrasal.questions) { assert.equal(q.answer, q.donorKey); assert.equal(q.source, 'PhrasalVerbsQuiz donor DATA'); }
 });
 
@@ -26,10 +28,14 @@ test('Phrasal Verbs topics, prompts, and options are valid', () => {
   for (const topic of REQUIRED_PHRASAL_TOPICS) assert.ok(topicCounts[topic] >= 5 && topicCounts[topic] <= 30, `${topic}: ${topicCounts[topic]}`);
   assert.equal(new Set(phrasal.questions.map((q) => q.id)).size, phrasal.questions.length);
   assert.equal(new Set(phrasal.questions.map((q) => normalize(q.prompt))).size, phrasal.questions.length);
+  const donorKeys = new Set(phrasal.questions.map((q) => q.donorKey));
+  const forbiddenExplanationPhrases = ['matches the meaning', 'The example uses a past form', 'The example shows the form in context'];
   for (const q of phrasal.questions) {
     assert.equal(q.options.length, 4);
     assert.equal(new Set(q.options.map(normalize)).size, 4);
     assert.equal(q.options.filter((option) => option === q.answer).length, 1);
+    for (const option of q.options) assert.ok(donorKeys.has(option), `${q.id}: ${option}`);
+    for (const phrase of forbiddenExplanationPhrases) assert.doesNotMatch(q.explanation, new RegExp(phrase));
     assert.doesNotMatch([q.prompt, q.explanation, q.example, q.answer, ...q.options].join(' '), new RegExp(['dis' + 'tractor', 'place' + 'holder', 'Modern ' + 'example', 'stated ' + 'context', 'generated ' + 'answer', 'donor-import'].join('|'), 'i'));
     assert.doesNotMatch([q.prompt, q.explanation, q.example, q.answer, ...q.options].join(' '), /[\u0400-\u04FF]/);
   }
