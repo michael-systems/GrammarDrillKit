@@ -31,7 +31,7 @@ Implemented now:
 - Compact active-session layout with a shorter product header and a two-pane question/feedback workspace for Compact and Small desktop views.
 - Compact is designed to fit answered sessions at 1280 × 720 and 1366 × 768 desktop viewports; Small is designed to fit answered sessions at 1366 × 768. Expanded examples or future longer content may naturally require scrolling.
 - Responsive phone-width layout stacks controls and session panes into one column without fixed overlays or horizontal scrolling.
-- Subtle creator footer link: [Made by M](https://t.me/lifeforevery).
+- Subtle creator footer link: [Made by M](https://telegram.me/lifeforevery).
 - Practice, Mixed Practice, Focused Practice, and Mistakes Review show one question at a time with immediate feedback, correct answer, explanation, optional Russian translation, separate example reveal, next navigation, and final score.
 - Exam shows no per-question correctness, correct answer, explanation, translation, or example until the final score.
 - Dependency-free tests for quiz-engine, session-planner, and storage logic using Node's built-in test runner.
@@ -141,3 +141,21 @@ The tests use Node's built-in test runner and require no npm install step. Progr
 ## GitHub Pages compatibility
 
 The project is fully static. It uses relative paths, native ES modules, and no build step, so the repository root can be served directly by GitHub Pages.
+
+## Content validation
+
+Phrasal Verbs now contains 150 donor-sourced questions from the local PhrasalVerbsQuiz data. Donor entries 1–50 map from Basic to `easy`, entries 51–100 map from Intermediate to `medium`, and entries 101–150 map from Advanced to `hard`. All 150 donor entries are preserved in donor order and classified into 12 learner-facing topics.
+
+Run the dependency-free validator with:
+
+```sh
+node scripts/validate-content.mjs
+```
+
+Run the test suite with Node’s built-in runner:
+
+```sh
+node --test
+```
+
+No installation is required for normal GitHub Pages use, and the public application URL remains unchanged.
