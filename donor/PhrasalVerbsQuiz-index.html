@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phrasal Verb Quiz — Three Levels</title>
+  <style>
+    :root { --bg:#0b132b; --card:#1c2541; --accent:#5bc0be; --muted:#b3c2cf; --good:#32d296; --bad:#ff6b6b; }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:#fff;margin:0; position: relative; min-height: 100vh; padding-bottom: 60px; box-sizing: border-box;}
+    .wrap{max-width:860px;margin:0 auto;padding:24px}
+    .card{background:var(--card);border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .header .progress{font-weight:700;color:var(--accent);letter-spacing:.5px}
+    .bar{height:6px;background:#0f1b3d;border-radius:999px;overflow:hidden;margin:10px 0 18px}
+    .bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#9fffe0);transition:width .3s ease}
+    h2{margin:10px 0 8px;font-weight:750}
+    .ru{color:var(--muted);margin:0 0 8px;display:none}
+    .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+    button.opt{background:#0f1b3d;color:#fff;border:1px solid #233056;border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;transition:.15s}
+    button.opt:hover{border-color:var(--accent);transform:translateY(-1px)}
+    button.opt.correct{background:rgba(50,210,150,.15);border-color:var(--good)}
+    button.opt.wrong{background:rgba(255,107,107,.15);border-color:var(--bad)}
+    .feedback{margin-top:10px;font-weight:700}
+    .ex{margin-top:4px;color:#e6f7ff}
+    .controls{margin-top:16px;display:flex;gap:10px}
+    .btn{background:var(--accent);color:#001219;border:none;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+    .btn.secondary{background:#233056;color:#fff}
+    .center{text-align:center}
+    .stat{display:grid;gap:14px}
+    .stat .row{display:flex;justify-content:space-between;font-size:1.05rem}
+    .big{font-size:1.3rem;font-weight:800}
+    .quote{margin-top:18px;color:var(--muted);font-style:italic}
+    .level-buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0}
+    .level-btn{padding:16px;border-radius:12px;background:#233056;border:2px solid transparent;color:white;font-weight:700;cursor:pointer;transition:all 0.3s}
+    .level-btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+    .level-btn.active{background:var(--accent);color:#001219}
+    .footer{position: fixed; bottom: 20px; left: 0; right: 0; text-align: center;}
+    .footer-link{color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;}
+    .footer-link:hover{color: var(--accent);}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="stage"></div>
+  </div>
+  <div class="footer">
+    <a href="https://t.me/lifeforevery" class="footer-link">Made by M</a>
+  </div>
+<script>
+const DATA = [
+  // Level 1: Basic (1-50)
+  { q:"He stopped trying after a few attempts.", rt:"Он сдался после нескольких попыток.", key:"give up", tense:"past", ex:"He gave up after a few tries." },
+  { q:"I lifted it from the floor.", rt:"Я поднял это с пола.", key:"pick up", tense:"past", ex:"I picked it up from the floor." },
+  { q:"We need to reach the group.", rt:"Нам нужно догнать группу.", key:"catch up with", tense:"present", ex:"We need to catch up with the group." },
+  { q:"It's hard to stay current with the latest trends.", rt:"Трудно успевать за последними тенденциями.", key:"keep up with", tense:"present", ex:"It's hard to keep up with the latest trends." },
+  { q:"He felt excluded from the team.", rt:"Он чувствовал себя исключённым из команды.", key:"leave out", tense:"past", ex:"He felt left out of the team." },
+  { q:"She quit college.", rt:"Она бросила колледж.", key:"drop out of", tense:"past", ex:"She dropped out of college." },
+  { q:"You can enter using the spare key.", rt:"Можешь войти сам с запасным ключом.", key:"let in", tense:"present", ex:"You can let yourself in with the spare key." },
+  { q:"He finally entered after waiting for hours.", rt:"Он наконец вошёл после долгого ожидания.", key:"get in", tense:"past", ex:"He finally got in after waiting for hours." },
+  { q:"She plunged to save the child.", rt:"Она нырнула, чтобы спасти ребёнка.", key:"dive in", tense:"past", ex:"She dived in to save the child." },
+  { q:"We registered at the hotel.", rt:"Мы зарегистрировались в отеле.", key:"check in", tense:"past", ex:"We checked in at the hotel." },
+
+  { q:"She registered at a spa for the weekend.", rt:"Она заселилась в спа на выходные.", key:"check into", tense:"past", ex:"She checked into a spa for the weekend." },
+  { q:"He just entered without knocking.", rt:"Он просто вошёл без стука.", key:"walk in", tense:"past", ex:"He just walked in without knocking." },
+  { q:"Let's enter before it rains.", rt:"Давай зайдём, пока не пошёл дождь.", key:"go in", tense:"present", ex:"Let's go in before it rains." },
+  { q:"Someone tried to force their way in last night.", rt:"Кто-то пытался взломать дом прошлой ночью.", key:"break in", tense:"past", ex:"Someone tried to break in last night." },
+  { q:"I couldn't get into my apartment.", rt:"Я не смог попасть в квартиру.", key:"lock out", tense:"past", ex:"I got locked out of my apartment." },
+  { q:"She got angry and left the meeting.", rt:"Она рассердилась и вышла с собрания.", key:"walk out", tense:"past", ex:"She got angry and walked out of the meeting." },
+  { q:"He went through the window to reach the outside.", rt:"Он вылез через окно.", key:"climb out", tense:"past", ex:"He climbed out through the window." },
+  { q:"Be careful! A car is approaching!", rt:"Осторожно! Машина!", key:"look out", tense:"present", ex:"Look out! There's a car coming!" },
+  { q:"You should try that new cafe.", rt:"Тебе стоит заглянуть в новое кафе.", key:"check out", tense:"present", ex:"You should check out that new cafe." },
+  { q:"I visited my friend for a chat.", rt:"Я заглянул к другу поболтать.", key:"drop in", tense:"past", ex:"I dropped in on my friend for a chat." },
+
+  { q:"Please complete this form.", rt:"Пожалуйста, заполните эту форму.", key:"fill out", tense:"present", ex:"Please fill out this form." },
+  { q:"Everyone was singing, so I took part as well.", rt:"Все пели, и я присоединился.", key:"join in", tense:"past", ex:"Everyone was singing, so I joined in." },
+  { q:"Can you substitute for me tomorrow?", rt:"Можешь подменить меня завтра?", key:"fill in for", tense:"present", ex:"Can you fill in for me tomorrow?" },
+  { q:"She gave shelter to a stray cat.", rt:"Она приютила бездомного кота.", key:"take in", tense:"past", ex:"She took in a stray cat." },
+  { q:"Connect the charger to the socket.", rt:"Вставь зарядку в розетку.", key:"plug in", tense:"present", ex:"Plug in the charger." },
+  { q:"We decided to dine out tonight.", rt:"Мы решили поужинать вне дома.", key:"eat out", tense:"past", ex:"We decided to eat out tonight." },
+  { q:"He withdrew from the competition.", rt:"Он выбыл из соревнования.", key:"pull out of", tense:"past", ex:"He pulled out of the competition." },
+  { q:"Let's leave this place.", rt:"Давай уйдём отсюда.", key:"get out", tense:"present", ex:"Let's get out of here." },
+  { q:"You should eliminate junk food.", rt:"Тебе стоит исключить вредную еду.", key:"cut out", tense:"present", ex:"You should cut out junk food." },
+  { q:"Don't omit any details.", rt:"Не упускай никаких деталей.", key:"leave out", tense:"present", ex:"Don't leave out any details." },
+
+  { q:"Put a line through the wrong answer.", rt:"Зачеркни неправильный ответ.", key:"cross out", tense:"present", ex:"Cross out the wrong answer." },
+  { q:"I erased my mistake.", rt:"Я стёр ошибку.", key:"rub out", tense:"past", ex:"I rubbed out my mistake." },
+  { q:"We usually socialize on Fridays.", rt:"Мы обычно выходим по пятницам.", key:"go out", tense:"present", ex:"We usually go out on Fridays." },
+  { q:"He quickly extinguished the fire.", rt:"Он быстро потушил огонь.", key:"put out", tense:"past", ex:"He quickly put out the fire." },
+  { q:"Switch off the light when you leave.", rt:"Выключи свет, когда уйдёшь.", key:"turn out", tense:"present", ex:"Turn out the light when you leave." },
+  { q:"She extinguished the candles.", rt:"Она задула свечи.", key:"blow out", tense:"past", ex:"She blew out the candles." },
+  { q:"He trains at the gym every day.", rt:"Он тренируется в спортзале каждый день.", key:"work out", tense:"present", ex:"He works out at the gym every day." },
+  { q:"Things didn't go as planned.", rt:"Всё сложилось не так, как планировалось.", key:"work out", tense:"past", ex:"Things didn't work out as planned." },
+  { q:"I can't solve this equation.", rt:"Я не могу решить это уравнение.", key:"work out", tense:"present", ex:"I can't work out this equation." },
+  { q:"Let's develop a solution together.", rt:"Давай вместе найдем решение.", key:"work out", tense:"present", ex:"Let's work out a solution together." },
+
+  { q:"The scientists conducted an experiment.", rt:"Учёные провели эксперимент.", key:"carry out", tense:"past", ex:"The scientists carried out an experiment." },
+  { q:"She argued with her best friend.", rt:"Она поссорилась с лучшей подругой.", key:"fall out", tense:"past", ex:"She fell out with her best friend." },
+  { q:"I need to learn what happened.", rt:"Мне нужно узнать, что произошло.", key:"find out", tense:"present", ex:"I need to find out what happened." },
+  { q:"The teacher distributed the test papers.", rt:"Учитель раздал тесты.", key:"hand out", tense:"past", ex:"The teacher handed out the test papers." },
+  { q:"He indicated an error in my report.", rt:"Он указал на ошибку в моем отчёте.", key:"point out", tense:"past", ex:"He pointed out an error in my report." },
+  { q:"We had no milk left.", rt:"У нас закончилось молоко.", key:"run out of", tense:"past", ex:"We ran out of milk." },
+  { q:"I need to organize my schedule.", rt:"Мне нужно разобраться с расписанием.", key:"sort out", tense:"present", ex:"I need to sort out my schedule." },
+  { q:"The rumor proved true.", rt:"Слух оказался правдой.", key:"turn out", tense:"past", ex:"The rumor turned out to be true." },
+  { q:"In the end, everything worked out well.", rt:"В итоге всё получилось хорошо.", key:"turn out", tense:"past", ex:"Everything turned out good in the end." },
+  { q:"In the end, we discovered that she was right.", rt:"Оказалось, что она была права.", key:"turn out", tense:"past", ex:"It turned out that she was right." },
+
+  // Level 2: Intermediate (51-100)
+  { q:"I want to test this new camera.", rt:"Хочу протестировать новую камеру.", key:"try out", tense:"present", ex:"I want to try out this new camera." },
+  { q:"Could you switch the light on?", rt:"Можешь включить свет?", key:"turn on", tense:"present", ex:"Could you turn the light on?" },
+  { q:"I turned off my phone.", rt:"Я выключила телефон.", key:"switch off", tense:"past", ex:"I switched off my phone." },
+  { q:"He started some music.", rt:"Он включил музыку.", key:"put on", tense:"past", ex:"He put on some music." },
+  { q:"It's raining, let's continue.", rt:"Идёт дождь, давай продолжим путь.", key:"go on", tense:"present", ex:"It's raining, let's go on." },
+  { q:"They canceled the concert.", rt:"Они отменили концерт.", key:"call off", tense:"past", ex:"They called off the concert." },
+  { q:"The wedding was postponed till June.", rt:"Свадьбу перенесли на июнь.", key:"put off", tense:"past", ex:"The wedding was put off till June." },
+  { q:"She dressed herself in gloves.", rt:"Она надела перчатки.", key:"put on", tense:"past", ex:"She put on her gloves." },
+  { q:"I tested how the new jacket fits.", rt:"Я примерил новую куртку.", key:"try on", tense:"past", ex:"I tried on a new jacket." },
+  { q:"He removed his glasses.", rt:"Он снял очки.", key:"take off", tense:"past", ex:"He took off his glasses." },
+
+  { q:"I've gained some weight.", rt:"Я набрал вес.", key:"put on", tense:"present", ex:"I've put on some weight." },
+  { q:"I'm leaving for Spain tomorrow.", rt:"Я завтра уезжаю в Испанию.", key:"be off", tense:"present", ex:"I'm off to Spain tomorrow." },
+  { q:"The thief ran away before the police arrived.", rt:"Вор убежал до приезда полиции.", key:"run off", tense:"past", ex:"The thief ran off before police came." },
+  { q:"We set out early to avoid traffic.", rt:"Мы выехали рано, чтобы избежать пробок.", key:"set off", tense:"past", ex:"We set off early to avoid traffic." },
+  { q:"The plane departed on time.", rt:"Самолёт взлетел вовремя.", key:"take off", tense:"past", ex:"The plane took off on time." },
+  { q:"We went to the airport to see her depart.", rt:"Мы поехали в аэропорт проводить её.", key:"see off", tense:"past", ex:"We went to the airport to see her off." },
+  { q:"The meeting lasted for hours.", rt:"Встреча длилась часами.", key:"go on", tense:"past", ex:"The meeting went on for hours." },
+  { q:"He continued studying despite problems.", rt:"Он продолжал учёбу, несмотря на трудности.", key:"carry on", tense:"past", ex:"He carried on studying despite problems." },
+  { q:"He continues to complain.", rt:"Он всё жалуется и жалуется.", key:"keep on", tense:"present", ex:"He keeps on complaining." },
+  { q:"How are you doing at work?", rt:"Как у тебя дела на работе?", key:"get on", tense:"present", ex:"How are you getting on at work?" },
+
+  { q:"They don't get along well.", rt:"Они не ладят.", key:"get on", tense:"present", ex:"They don't get on well." },
+  { q:"I must continue with my work.", rt:"Мне нужно продолжать работу.", key:"get on with", tense:"present", ex:"I must get on with my work." },
+  { q:"I dozed off during the movie.", rt:"Я задремал во время фильма.", key:"drop off", tense:"past", ex:"I dropped off during the movie." },
+  { q:"I'll complete it tomorrow.", rt:"Я закончу это завтра.", key:"finish off", tense:"present", ex:"I'll finish it off tomorrow." },
+  { q:"A bomb exploded in the city.", rt:"В городе взорвалась бомба.", key:"go off", tense:"past", ex:"A bomb went off in the city." },
+  { q:"We were discouraged by the queue.", rt:"Очередь нас оттолкнула.", key:"put off", tense:"past", ex:"We were put off by the queue." },
+  { q:"We were overcharged in that store.", rt:"Нас ободрали в этом магазине.", key:"rip off", tense:"past", ex:"We were ripped off in that store." },
+  { q:"He likes boasting about his car.", rt:"Он любит хвастаться своей машиной.", key:"show off", tense:"present", ex:"He likes showing off his car." },
+  { q:"The teacher scolded me for being late.", rt:"Учитель отругал меня за опоздание.", key:"tell off", tense:"past", ex:"The teacher told me off for being late." },
+  { q:"We installed new shelves.", rt:"Мы повесили новые полки.", key:"put up", tense:"past", ex:"We put up new shelves." },
+
+  { q:"She lifted the pen from the desk.", rt:"Она подняла ручку.", key:"pick up", tense:"past", ex:"She picked up the pen." },
+  { q:"Everyone rose when he came in.", rt:"Все встали, когда он вошёл.", key:"stand up", tense:"past", ex:"Everyone stood up when he entered." },
+  { q:"Can you increase the volume?", rt:"Можешь сделать громче?", key:"turn up", tense:"present", ex:"Can you turn up the volume?" },
+  { q:"I removed the old posters.", rt:"Я снял старые плакаты.", key:"take down", tense:"past", ex:"I took down the old posters." },
+  { q:"He laid the phone on the table.", rt:"Он положил трубку.", key:"put down", tense:"past", ex:"He put down the phone." },
+  { q:"She leaned forward to tie her shoes.", rt:"Она наклонилась завязать шнурки.", key:"bend down", tense:"past", ex:"She bent down to tie her shoes." },
+  { q:"Lower the heat; it's too hot.", rt:"Убавь температуру, слишком жарко.", key:"turn down", tense:"present", ex:"Turn down the heat, it's too hot." },
+  { q:"They demolished the old building.", rt:"Они снесли старое здание.", key:"knock down", tense:"past", ex:"They knocked down the old building." },
+  { q:"The tree was felled.", rt:"Дерево срубили.", key:"cut down", tense:"past", ex:"The tree was cut down." },
+  { q:"Slow your speed; you're driving too fast.", rt:"Помедленнее, ты едешь слишком быстро.", key:"slow down", tense:"present", ex:"Slow down, you're driving too fast." },
+
+  { q:"Relax; it’s not that serious.", rt:"Успокойся, это не так важно.", key:"calm down", tense:"present", ex:"Calm down, it's not a big deal." },
+  { q:"I'm reducing my sugar intake.", rt:"Я сокращаю потребление сахара.", key:"cut down on", tense:"present", ex:"I'm cutting down on sugar." },
+  { q:"The car stopped working on the highway.", rt:"Машина сломалась на шоссе.", key:"break down", tense:"past", ex:"The car broke down on the highway." },
+  { q:"The shop shut last year.", rt:"Магазин закрылся в прошлом году.", key:"close down", tense:"past", ex:"The shop closed down last year." },
+  { q:"He never disappoints his friends.", rt:"Он никогда не подводит друзей.", key:"let down", tense:"present", ex:"He never lets his friends down." },
+  { q:"She declined the job offer.", rt:"Она отказалась от предложения о работе.", key:"turn down", tense:"past", ex:"She turned down the job offer." },
+  { q:"I wrote the address.", rt:"Я записал адрес.", key:"write down", tense:"past", ex:"I wrote down the address." },
+  { q:"A stranger approached me.", rt:"Незнакомец подошёл ко мне.", key:"come up to", tense:"past", ex:"A stranger came up to me." },
+  { q:"I'll reach you later.", rt:"Я догоню тебя позже.", key:"catch up with", tense:"present", ex:"I'll catch up with you later." },
+  { q:"I can't match your pace.", rt:"Я не успеваю за тобой.", key:"keep up with", tense:"present", ex:"I can't keep up with you." },
+
+  // Level 3: Advanced (101-150)
+  { q:"They founded a new company.", rt:"Они основали новую компанию.", key:"set up", tense:"past", ex:"They set up a new company." },
+  { q:"He started painting last year.", rt:"Он занялся живописью в прошлом году.", key:"take up", tense:"past", ex:"He took up painting last year." },
+  { q:"We arranged a meeting for Friday.", rt:"Мы назначили встречу на пятницу.", key:"fix up", tense:"past", ex:"We fixed up a meeting for Friday." },
+  { q:"I was raised in a small town.", rt:"Я вырос в маленьком городе.", key:"grow up", tense:"past", ex:"I grew up in a small town." },
+  { q:"Her grandparents raised her.", rt:"Её воспитали бабушка и дедушка.", key:"bring up", tense:"past", ex:"She was brought up by her grandparents." },
+  { q:"Let's clean the room.", rt:"Давай приберёмся в комнате.", key:"tidy up", tense:"present", ex:"Let's tidy up the room." },
+  { q:"I hate doing the dishes.", rt:"Я ненавижу мыть посуду.", key:"wash up", tense:"present", ex:"I hate washing up." },
+  { q:"We eventually stayed at a motel.", rt:"В итоге мы остановились в мотеле.", key:"end up", tense:"past", ex:"We ended up staying at a motel." },
+  { q:"Don't lose heart; you can do it!", rt:"Не сдавайся, у тебя получится!", key:"give up", tense:"present", ex:"Don't give up, you can do it!" },
+  { q:"Children constitute half of the class.", rt:"Дети составляют половину класса.", key:"make up", tense:"present", ex:"Children make up half of the class." },
+
+  { q:"The human body consists of cells.", rt:"Человеческое тело состоит из клеток.", key:"be made up of", tense:"present", ex:"The human body is made up of cells." },
+  { q:"This sofa occupies too much space.", rt:"Этот диван занимает слишком много места.", key:"take up", tense:"present", ex:"This sofa takes up too much space." },
+  { q:"He didn't show up for the meeting.", rt:"Он не появился на встрече.", key:"turn up", tense:"past", ex:"He didn't turn up for the meeting." },
+  { q:"I've consumed all the milk.", rt:"Я израсходовал всё молоко.", key:"use up", tense:"present", ex:"I've used up all the milk." },
+  { q:"Don't mention that topic again.", rt:"Не поднимай эту тему снова.", key:"bring up", tense:"present", ex:"Don't bring up that topic again." },
+  { q:"The issue arose in conversation.", rt:"Этот вопрос всплыл в разговоре.", key:"come up", tense:"past", ex:"The issue came up in conversation." },
+  { q:"She invented a great idea.", rt:"Она придумала отличную идею.", key:"come up with", tense:"past", ex:"She came up with a great idea." },
+  { q:"He invented the whole story.", rt:"Он всё это выдумал.", key:"make up", tense:"past", ex:"He made the whole story up." },
+  { q:"Be more positive; things will get better.", rt:"Не унывай, всё наладится.", key:"cheer up", tense:"present", ex:"Cheer up, things will get better." },
+  { q:"I'm setting money aside for a car.", rt:"Я коплю на машину.", key:"save up", tense:"present", ex:"I'm saving up for a car." },
+
+  { q:"It cleared by afternoon.", rt:"К полудню прояснилось.", key:"clear up", tense:"past", ex:"It cleared up by afternoon." },
+  { q:"The engine suddenly exploded.", rt:"Двигатель внезапно взорвался.", key:"blow up", tense:"past", ex:"The engine blew up suddenly." },
+  { q:"She ripped the letter apart.", rt:"Она разорвала письмо.", key:"tear up", tense:"past", ex:"She tore up the letter." },
+  { q:"He was attacked by a gang.", rt:"Его избила банда.", key:"beat up", tense:"past", ex:"He was beaten up by a gang." },
+  { q:"They separated last year.", rt:"Они расстались в прошлом году.", key:"break up", tense:"past", ex:"They broke up last year." },
+  { q:"Fasten your coat; it's cold.", rt:"Застегни пальто, холодно.", key:"do up", tense:"present", ex:"Do up your coat, it's cold." },
+  { q:"They renovated their kitchen.", rt:"Они отремонтировали кухню.", key:"do up", tense:"past", ex:"They did up their kitchen." },
+  { q:"Find it in the dictionary.", rt:"Посмотри это в словаре.", key:"look up", tense:"present", ex:"Look it up in the dictionary." },
+  { q:"I can't tolerate his behavior.", rt:"Я не могу терпеть его поведение.", key:"put up with", tense:"present", ex:"I can't put up with his behavior." },
+  { q:"Sorry for delaying you.", rt:"Извини, что задержал тебя.", key:"hold up", tense:"present", ex:"Sorry for holding you up." },
+
+  { q:"People always confuse them.", rt:"Люди их постоянно путают.", key:"mix up", tense:"present", ex:"People always mix them up." },
+  { q:"We're leaving this weekend.", rt:"Мы уезжаем на выходные.", key:"go away", tense:"present", ex:"We're going away this weekend." },
+  { q:"She drove off quickly.", rt:"Она быстро уехала.", key:"drive away", tense:"past", ex:"She drove away quickly." },
+  { q:"The bird flew off.", rt:"Птица улетела.", key:"fly away", tense:"past", ex:"The bird flew away." },
+  { q:"My hat was carried off by the wind.", rt:"Мою шляпу унесло ветром.", key:"blow away", tense:"past", ex:"My hat blew away in the wind." },
+  { q:"Police confiscated his passport.", rt:"Полиция забрала его паспорт.", key:"take away", tense:"past", ex:"Police took away his passport." },
+  { q:"We returned to the hotel on foot.", rt:"Мы вернулись пешком в отель.", key:"walk back", tense:"past", ex:"We walked back to the hotel." },
+  { q:"I returned the book yesterday.", rt:"Я вернул книгу вчера.", key:"give back", tense:"past", ex:"I gave back the book yesterday." },
+  { q:"Return it to the shelf.", rt:"Поставь это обратно на полку.", key:"put back", tense:"present", ex:"Put it back on the shelf." },
+  { q:"The thief managed to escape.", rt:"Вору удалось сбежать.", key:"get away", tense:"past", ex:"The thief managed to get away." },
+
+  { q:"He parked illegally but wasn't punished for it.", rt:"Он припарковался неправильно, но ему это сошло с рук.", key:"get away with", tense:"past", ex:"He parked illegally but got away with it." },
+  { q:"Keep your distance from the edge!", rt:"Держись подальше от края!", key:"keep away from", tense:"present", ex:"Keep away from the edge!" },
+  { q:"She donated her old clothes.", rt:"Она отдала свою старую одежду.", key:"give away", tense:"past", ex:"She gave away her old clothes." },
+  { q:"They stored the dishes in the cupboard.", rt:"Они убрали посуду в шкаф.", key:"put away", tense:"past", ex:"They put away the dishes in the cupboard." },
+  { q:"I discarded the empty bottle.", rt:"Я выбросил пустую бутылку.", key:"throw away", tense:"past", ex:"I threw away the empty bottle." },
+  { q:"She smiled and waved in return.", rt:"Она улыбнулась и помахала в ответ.", key:"wave back", tense:"past", ex:"She smiled and waved back." },
+  { q:"I'll return your call later.", rt:"Я перезвоню тебе позже.", key:"call back", tense:"present", ex:"I'll call you back later." },
+  { q:"He never responded to me.", rt:"Он так и не ответил мне.", key:"get back to", tense:"past", ex:"He never got back to me." },
+  { q:"When I reflect on it, I realize I learned a lot.", rt:"Оглядываясь назад, я многому научился.", key:"look back", tense:"present", ex:"Looking back, I learned a lot." },
+  { q:"I'll repay you next week.", rt:"Я верну тебе деньги на следующей неделе.", key:"pay back", tense:"present", ex:"I'll pay you back next week." }
+];
+
+// Разделяем данные на 3 уровня
+const LEVELS = {
+  1: DATA.slice(0, 50),   // Basic
+  2: DATA.slice(50, 100), // Intermediate  
+  3: DATA.slice(100, 150) // Advanced
+};
+
+// Engine
+let currentLevel = 1;
+let currentData = LEVELS[1];
+let ALL_OPTIONS = Array.from(new Set(currentData.map(d=>d.key)));
+let order = currentData.map((_,i)=>i);
+let wrongIndices = []; // Сохраняем индексы ошибок
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+shuffle(order);
+
+let idx=0;
+let correct=0;
+let wrong=0;
+
+function initializeLevel(level) {
+  currentLevel = level;
+  currentData = LEVELS[level];
+  ALL_OPTIONS = Array.from(new Set(currentData.map(d=>d.key)));
+  order = currentData.map((_,i)=>i);
+  shuffle(order);
+  idx = 0;
+  correct = 0;
+  wrong = 0;
+  wrongIndices = [];
+}
+
+function renderLevelSelection(){
+  const stage=document.getElementById('stage');
+  stage.innerHTML=`
+    <div class="center">
+      <div class="big">Choose Your Level</div>
+      <div class="quote">Select difficulty level to begin</div>
+      <div class="level-buttons">
+        <button class="level-btn ${currentLevel===1?'active':''}" id="level1">Level 1: Basic<br><small>50 phrasal verbs</small></button>
+        <button class="level-btn ${currentLevel===2?'active':''}" id="level2">Level 2: Intermediate<br><small>50 phrasal verbs</small></button>
+        <button class="level-btn ${currentLevel===3?'active':''}" id="level3">Level 3: Advanced<br><small>50 phrasal verbs</small></button>
+      </div>
+      <div class="controls">
+        <button class="btn" id="startQuiz">Start Quiz</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('level1').onclick=()=>{
+    currentLevel=1;
+    renderLevelSelection();
+  };
+  document.getElementById('level2').onclick=()=>{
+    currentLevel=2;
+    renderLevelSelection();
+  };
+  document.getElementById('level3').onclick=()=>{
+    currentLevel=3;
+    renderLevelSelection();
+  };
+  document.getElementById('startQuiz').onclick=()=>{
+    initializeLevel(currentLevel);
+    renderQuestion();
+  };
+}
+
+function renderQuestion(){
+  const total=order.length; 
+  const i=order[idx]; 
+  const item=currentData[i];
+  const stage=document.getElementById('stage'); 
+  const prog=Math.floor((idx/total)*100);
+  
+  const distractors=shuffle(ALL_OPTIONS.filter(x=>x!==item.key)).slice(0,4);
+  const choices=shuffle([item.key,...distractors]);
+  
+  stage.innerHTML=`
+    <div class="header">
+      <div class="progress">Level ${currentLevel} • Question ${idx+1} of ${total}</div>
+    </div>
+    <div class="bar"><div style="width:${prog}%"></div></div>
+    <h2>${item.q}</h2>
+    <p class="ru" id="ru">${item.rt}</p>
+    <div class="options" id="opts"></div>
+    <div class="feedback" id="fb"></div>
+    <div class="ex" id="ex"></div>
+    <div class="controls">
+      <button class="btn secondary" id="reveal">Show translation</button>
+      <button class="btn" id="next" style="display:none">Next</button>
+    </div>
+  `;
+  
+  const opts=document.getElementById('opts'); 
+  const fb=document.getElementById('fb'); 
+  const ex=document.getElementById('ex');
+  const next=document.getElementById('next'); 
+  const ru=document.getElementById('ru'); 
+  const reveal=document.getElementById('reveal');
+  
+  reveal.onclick=()=>{ru.style.display='block'};
+  
+  choices.forEach(c=>{
+    const b=document.createElement('button'); 
+    b.className='opt'; 
+    b.textContent=c; 
+    b.onclick=()=>{
+      const ok=(c===item.key); 
+      if(ok){
+        b.classList.add('correct');
+        fb.textContent='✅ Correct';
+        correct++;
+      } else {
+        b.classList.add('wrong');
+        fb.textContent='❌ Try again';
+        wrong++;
+        wrongIndices.push(i); // Сохраняем индекс ошибки
+      } 
+      Array.from(opts.children).forEach(el=>el.disabled=true); 
+      ru.style.display='block'; 
+      ex.textContent='Example: '+item.ex; 
+      next.style.display='inline-block';
+    }; 
+    opts.appendChild(b);
+  });
+  
+  next.onclick=()=>{
+    idx++; 
+    if(idx<total){
+      renderQuestion();
+    } else {
+      renderStats();
+    }
+  };
+}
+
+function renderStats(){
+  const stage=document.getElementById('stage'); 
+  const accuracy=(correct+wrong)?((correct/(correct+wrong))*100).toFixed(0):'0';
+  
+  let quote = '';
+  if (currentLevel === 1) {
+    quote = 'Constantly move. Hell devour idle.';
+  } else if (currentLevel === 2) {
+    quote = 'There is no try, only do.';
+  } else if (currentLevel === 3) {
+    quote = 'Nothing is true, everything is permitted.';
+  }
+  
+  stage.innerHTML=`
+    <div class="center">
+      <div class="big">Level ${currentLevel} Complete!</div>
+      <div class="stat" style="margin-top:12px">
+        <div class="row"><span>Correct</span><strong style="color:var(--good)">${correct}</strong></div>
+        <div class="row"><span>Wrong</span><strong style="color:var(--bad)">${wrong}</strong></div>
+        <div class="row"><span>Accuracy</span><strong>${accuracy}%</strong></div>
+      </div>
+      <div class="quote">${quote}</div>
+      <div class="controls" style="justify-content:center; margin-top:16px;">
+        ${wrongIndices.length > 0 ? '<button class="btn" id="correctMistakes">Correct Mistakes</button>' : ''}
+        <button class="btn secondary" id="chooseLevel">Choose Level</button>
+        <button class="btn secondary" id="restartLevel">Restart Level</button>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('chooseLevel').onclick=renderLevelSelection;
+  document.getElementById('restartLevel').onclick=()=>{
+    initializeLevel(currentLevel);
+    renderQuestion();
+  };
+  
+  const correctMistakesBtn = document.getElementById('correctMistakes');
+  if(correctMistakesBtn){
+    correctMistakesBtn.onclick=()=>{
+      // Берем только те вопросы, где были ошибки
+      order = wrongIndices.slice();
+      shuffle(order);
+      idx=0;correct=0;wrong=0;wrongIndices=[];
+      renderQuestion();
+    };
+  }
+}
+
+// Start with level selection
+renderLevelSelection();
+</script>
+</body>
+</html>
