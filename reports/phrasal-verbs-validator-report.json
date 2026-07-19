@@ -1,0 +1,387 @@
+{
+  "valid": true,
+  "generatedAt": "2026-07-17T21:15:01.292Z",
+  "totals": {
+    "modules": 1,
+    "questions": 150,
+    "levels": {
+      "easy": 50,
+      "medium": 50,
+      "hard": 50
+    },
+    "errors": 0,
+    "warnings": 3
+  },
+  "modules": [
+    {
+      "id": "phrasal-verbs",
+      "title": "Phrasal Verbs",
+      "total": 150,
+      "levels": {
+        "easy": 50,
+        "medium": 50,
+        "hard": 50
+      },
+      "topics": {
+        "movement-travel": {
+          "total": 15,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 5
+          }
+        },
+        "entering-leaving": {
+          "total": 13,
+          "levels": {
+            "easy": 5,
+            "medium": 4,
+            "hard": 4
+          }
+        },
+        "daily-routines": {
+          "total": 15,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 5
+          }
+        },
+        "work-study": {
+          "total": 15,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 5
+          }
+        },
+        "communication-information": {
+          "total": 16,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 6
+          }
+        },
+        "relationships-social": {
+          "total": 14,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 4
+          }
+        },
+        "problems-solutions": {
+          "total": 15,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 5
+          }
+        },
+        "change-progress": {
+          "total": 15,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 5
+          }
+        },
+        "objects-devices": {
+          "total": 17,
+          "levels": {
+            "easy": 5,
+            "medium": 6,
+            "hard": 6
+          }
+        },
+        "plans-business": {
+          "total": 15,
+          "levels": {
+            "easy": 5,
+            "medium": 5,
+            "hard": 5
+          }
+        }
+      },
+      "contexts": {
+        "home-family": 15,
+        "friends-relationships": 15,
+        "work-freelance": 15,
+        "education": 15,
+        "technology-messaging": 15,
+        "shopping-money-services": 15,
+        "housing-repairs": 15,
+        "travel-transport": 15,
+        "food-health-fitness": 15,
+        "entertainment-planning-conflict": 15
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "code": "question.options.repeated",
+      "message": "An identical option set appears 2 times.",
+      "signature": "carry on || drop out of || give up || put off"
+    },
+    {
+      "code": "question.options.repeated",
+      "message": "An identical option set appears 2 times.",
+      "signature": "pick up || put away || put down || take away"
+    },
+    {
+      "code": "question.options.repeated",
+      "message": "An identical option set appears 2 times.",
+      "signature": "do up || put on || take off || try on"
+    }
+  ],
+  "heuristics": {
+    "normalizedPromptOpenings": [],
+    "nearDuplicatePrompts": [],
+    "repeatedExplanations": [],
+    "repeatedContexts": [
+      {
+        "value": "education",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-006",
+          "phrasal-verbs-030",
+          "phrasal-verbs-031",
+          "phrasal-verbs-039",
+          "phrasal-verbs-044",
+          "phrasal-verbs-068",
+          "phrasal-verbs-074",
+          "phrasal-verbs-079",
+          "phrasal-verbs-081",
+          "phrasal-verbs-097",
+          "phrasal-verbs-110",
+          "phrasal-verbs-121",
+          "phrasal-verbs-128",
+          "phrasal-verbs-131",
+          "phrasal-verbs-149"
+        ]
+      },
+      {
+        "value": "entertainment planning conflict",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-001",
+          "phrasal-verbs-022",
+          "phrasal-verbs-027",
+          "phrasal-verbs-038",
+          "phrasal-verbs-049",
+          "phrasal-verbs-056",
+          "phrasal-verbs-057",
+          "phrasal-verbs-063",
+          "phrasal-verbs-075",
+          "phrasal-verbs-082",
+          "phrasal-verbs-102",
+          "phrasal-verbs-122",
+          "phrasal-verbs-123",
+          "phrasal-verbs-134",
+          "phrasal-verbs-141"
+        ]
+      },
+      {
+        "value": "food health fitness",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-026",
+          "phrasal-verbs-029",
+          "phrasal-verbs-037",
+          "phrasal-verbs-041",
+          "phrasal-verbs-046",
+          "phrasal-verbs-061",
+          "phrasal-verbs-073",
+          "phrasal-verbs-086",
+          "phrasal-verbs-092",
+          "phrasal-verbs-100",
+          "phrasal-verbs-111",
+          "phrasal-verbs-114",
+          "phrasal-verbs-124",
+          "phrasal-verbs-126",
+          "phrasal-verbs-142"
+        ]
+      },
+      {
+        "value": "friends relationships",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-005",
+          "phrasal-verbs-020",
+          "phrasal-verbs-033",
+          "phrasal-verbs-042",
+          "phrasal-verbs-050",
+          "phrasal-verbs-071",
+          "phrasal-verbs-078",
+          "phrasal-verbs-095",
+          "phrasal-verbs-098",
+          "phrasal-verbs-099",
+          "phrasal-verbs-109",
+          "phrasal-verbs-119",
+          "phrasal-verbs-125",
+          "phrasal-verbs-129",
+          "phrasal-verbs-146"
+        ]
+      },
+      {
+        "value": "home family",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-002",
+          "phrasal-verbs-013",
+          "phrasal-verbs-024",
+          "phrasal-verbs-035",
+          "phrasal-verbs-036",
+          "phrasal-verbs-058",
+          "phrasal-verbs-060",
+          "phrasal-verbs-066",
+          "phrasal-verbs-069",
+          "phrasal-verbs-091",
+          "phrasal-verbs-104",
+          "phrasal-verbs-105",
+          "phrasal-verbs-107",
+          "phrasal-verbs-112",
+          "phrasal-verbs-135"
+        ]
+      },
+      {
+        "value": "housing repairs",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-007",
+          "phrasal-verbs-012",
+          "phrasal-verbs-014",
+          "phrasal-verbs-015",
+          "phrasal-verbs-034",
+          "phrasal-verbs-052",
+          "phrasal-verbs-080",
+          "phrasal-verbs-084",
+          "phrasal-verbs-087",
+          "phrasal-verbs-089",
+          "phrasal-verbs-106",
+          "phrasal-verbs-127",
+          "phrasal-verbs-139",
+          "phrasal-verbs-144",
+          "phrasal-verbs-145"
+        ]
+      },
+      {
+        "value": "shopping money services",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-008",
+          "phrasal-verbs-010",
+          "phrasal-verbs-011",
+          "phrasal-verbs-019",
+          "phrasal-verbs-021",
+          "phrasal-verbs-059",
+          "phrasal-verbs-076",
+          "phrasal-verbs-077",
+          "phrasal-verbs-093",
+          "phrasal-verbs-094",
+          "phrasal-verbs-120",
+          "phrasal-verbs-133",
+          "phrasal-verbs-138",
+          "phrasal-verbs-143",
+          "phrasal-verbs-150"
+        ]
+      },
+      {
+        "value": "technology messaging",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-004",
+          "phrasal-verbs-025",
+          "phrasal-verbs-043",
+          "phrasal-verbs-047",
+          "phrasal-verbs-048",
+          "phrasal-verbs-051",
+          "phrasal-verbs-053",
+          "phrasal-verbs-054",
+          "phrasal-verbs-083",
+          "phrasal-verbs-085",
+          "phrasal-verbs-115",
+          "phrasal-verbs-117",
+          "phrasal-verbs-118",
+          "phrasal-verbs-147",
+          "phrasal-verbs-148"
+        ]
+      },
+      {
+        "value": "travel transport",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-003",
+          "phrasal-verbs-009",
+          "phrasal-verbs-017",
+          "phrasal-verbs-018",
+          "phrasal-verbs-028",
+          "phrasal-verbs-055",
+          "phrasal-verbs-062",
+          "phrasal-verbs-064",
+          "phrasal-verbs-065",
+          "phrasal-verbs-090",
+          "phrasal-verbs-108",
+          "phrasal-verbs-132",
+          "phrasal-verbs-136",
+          "phrasal-verbs-137",
+          "phrasal-verbs-140"
+        ]
+      },
+      {
+        "value": "work freelance",
+        "count": 15,
+        "ids": [
+          "phrasal-verbs-016",
+          "phrasal-verbs-023",
+          "phrasal-verbs-032",
+          "phrasal-verbs-040",
+          "phrasal-verbs-045",
+          "phrasal-verbs-067",
+          "phrasal-verbs-070",
+          "phrasal-verbs-072",
+          "phrasal-verbs-088",
+          "phrasal-verbs-096",
+          "phrasal-verbs-101",
+          "phrasal-verbs-103",
+          "phrasal-verbs-113",
+          "phrasal-verbs-116",
+          "phrasal-verbs-130"
+        ]
+      }
+    ],
+    "repeatedOptionSets": [
+      {
+        "value": "carry on || drop out of || give up || put off",
+        "count": 2,
+        "ids": [
+          "phrasal-verbs-001",
+          "phrasal-verbs-068"
+        ]
+      },
+      {
+        "value": "do up || put on || take off || try on",
+        "count": 2,
+        "ids": [
+          "phrasal-verbs-058",
+          "phrasal-verbs-126"
+        ]
+      },
+      {
+        "value": "pick up || put away || put down || take away",
+        "count": 2,
+        "ids": [
+          "phrasal-verbs-002",
+          "phrasal-verbs-085"
+        ]
+      }
+    ]
+  },
+  "scope": "phrasal-verbs",
+  "productShell": {
+    "valid": true,
+    "errors": []
+  }
+}

@@ -1,4 +1,4 @@
-import { shuffleArray } from './utilities.js';
+import { shuffleArray } from './utilities.js?v=20260719-session-size';
 
 export const QUESTION_TYPES = Object.freeze({
   multipleChoice: 'multiple_choice',

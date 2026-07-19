@@ -1,0 +1,477 @@
+[
+  {
+    "id": "conditionals-001",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "zero-conditional",
+    "context": "home-family",
+    "prompt": "In our kitchen, this happens every time: If the freezer door stays open, the food ___ warmer.",
+    "options": [
+      "gets",
+      "would get",
+      "got",
+      "would have become"
+    ],
+    "answer": "gets",
+    "explanation": "The result is a general, repeatable fact, so both clauses use the present simple: \"stays\" and \"gets\". The other choices describe an unreal or past result and do not match this established routine.",
+    "translation": "У нас на кухне это происходит каждый раз: если дверца морозильной камеры остаётся открытой, продукты становятся теплее.",
+    "example": "If you mix blue and yellow paint, you get green.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-002",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "first-conditional",
+    "context": "friends-relationships",
+    "prompt": "Nina may join us tonight. If she finishes work by seven, we ___ her at the cafe.",
+    "options": [
+      "will meet",
+      "would meet",
+      "met",
+      "would have met"
+    ],
+    "answer": "will meet",
+    "explanation": "Finishing work is a real future possibility, so the if-clause uses the present simple and the result uses \"will meet\". The alternatives place the meeting in an unreal or completed past situation.",
+    "translation": "Нина, возможно, присоединится к нам сегодня вечером. Если она закончит работу к семи, мы встретим её в кафе.",
+    "example": "If Omar calls this evening, I will tell him about the plan.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-003",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "second-conditional",
+    "context": "work-freelance",
+    "prompt": "I do not have a quiet room to work in now. If I had one, I ___ client calls from home.",
+    "options": [
+      "would take",
+      "will take",
+      "take",
+      "took"
+    ],
+    "answer": "would take",
+    "explanation": "The quiet room is imaginary in the present, so \"had\" is followed by \"would\" plus the base verb \"take\".",
+    "translation": "Сейчас у меня нет тихой комнаты для работы. Если бы она у меня была, я проводил бы звонки с клиентами из дома.",
+    "example": "If our studio had more daylight, we would photograph products there.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-004",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "unless",
+    "context": "education",
+    "prompt": "The reference list is required. The tutor will not review your essay ___ you include it.",
+    "options": [
+      "unless",
+      "if",
+      "because",
+      "although"
+    ],
+    "answer": "unless",
+    "explanation": "\"Unless\" means \"if not\": the tutor will review the essay only if the required reference list is included.",
+    "translation": "Список литературы обязателен. Преподаватель не будет проверять ваше эссе, если вы его не приложите.",
+    "example": "You cannot enter the lab unless you wear safety glasses.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-005",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "condition-markers",
+    "context": "technology-messaging",
+    "prompt": "The admin will restore your chat history ___ you verify the account with the recovery code. Choose the phrase that makes verification a strict condition.",
+    "options": [
+      "provided that",
+      "whether or not",
+      "even if",
+      "in case"
+    ],
+    "answer": "provided that",
+    "explanation": "\"Provided that\" introduces a requirement that must be met: restoration is available only after account verification.",
+    "translation": "Администратор восстановит историю вашего чата при условии, что вы подтвердите аккаунт с помощью кода восстановления.",
+    "example": "The venue will hold our booking provided that we pay the deposit today.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-006",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "wish-if-only",
+    "context": "shopping-money-services",
+    "prompt": "The monthly subscription is too expensive for my budget now. Which sentence expresses a present regret about that situation?",
+    "options": [
+      "I wish the monthly fee were lower.",
+      "I wish the monthly fee had been lower.",
+      "I hope the monthly fee will be lower.",
+      "I thought the monthly fee was lower."
+    ],
+    "answer": "I wish the monthly fee were lower.",
+    "explanation": "The fee is high now, so a present regret uses \"wish\" plus a past form: \"were lower\". \"Had been\" would refer to a past regret.",
+    "translation": "Сейчас подписка слишком дорогая для моего бюджета. Хотелось бы, чтобы ежемесячная плата была ниже.",
+    "example": "If only our apartment had a balcony.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-007",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "zero-conditional",
+    "context": "housing-repairs",
+    "prompt": "This is our usual maintenance routine: If the boiler pressure ___, the caretaker resets the system.",
+    "options": [
+      "falls below one bar",
+      "will fall below one bar",
+      "would fall below one bar",
+      "fell below one bar"
+    ],
+    "answer": "falls below one bar",
+    "explanation": "The sentence describes a routine response that happens repeatedly, so both \"falls\" and \"resets\" use the present simple.",
+    "translation": "Это наша обычная процедура обслуживания: если давление в котле падает ниже одного бара, смотритель перезапускает систему.",
+    "example": "If the workshop floor gets dusty, we sweep it before closing.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-008",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "first-conditional",
+    "context": "travel-transport",
+    "prompt": "Your train may move to another platform this evening. Which sentence gives a direct instruction for that real future possibility?",
+    "options": [
+      "If the app sends an alert this evening, check the platform number before you board the train.",
+      "If the app sent an alert, you would check the platform number before boarding.",
+      "If the app sends alerts, regular commuters check the platform number before boarding.",
+      "If the app had sent an alert, you would have checked the platform number before boarding."
+    ],
+    "answer": "If the app sends an alert this evening, check the platform number before you board the train.",
+    "explanation": "A real future condition takes the present simple in the if-clause, and the result can be an imperative: \"check the platform number\".",
+    "translation": "Если сегодня вечером приложение пришлёт уведомление, проверьте номер платформы перед посадкой на поезд.",
+    "example": "If the gate changes, follow the signs to the new departure area.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-009",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "second-conditional",
+    "context": "food-health-fitness",
+    "prompt": "The gym has no plans to open overnight, but imagine it did. If it stayed open 24 hours, I ___ before my early shift.",
+    "options": [
+      "could train",
+      "can train",
+      "will train",
+      "trained"
+    ],
+    "answer": "could train",
+    "explanation": "The overnight opening is imagined and unlikely, so the past form \"stayed\" pairs with \"could\" plus the base verb \"train\".",
+    "translation": "Спортзал не планирует работать ночью, но представим обратное. Если бы он работал круглосуточно, я мог бы тренироваться перед ранней сменой.",
+    "example": "If the pool were closer, we might swim there after work.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-010",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "unless",
+    "context": "entertainment-planning-conflict",
+    "prompt": "The venue needs the final guest numbers by noon. The booking will be cancelled ___ we confirm them before then.",
+    "options": [
+      "unless",
+      "even if",
+      "as long as",
+      "when"
+    ],
+    "answer": "unless",
+    "explanation": "\"Unless\" introduces the action needed to avoid the warning: the booking will be cancelled if the numbers are not confirmed.",
+    "translation": "Площадке нужно сообщить окончательное число гостей до полудня. Бронирование отменят, если мы не подтвердим число гостей до этого времени.",
+    "example": "The match will be postponed unless the storm passes.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-011",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "condition-markers",
+    "context": "home-family",
+    "prompt": "You can borrow the family car ___ you return it with a full charge. Which phrase makes that one requirement sufficient?",
+    "options": [
+      "as long as",
+      "whether or not",
+      "in case",
+      "unless"
+    ],
+    "answer": "as long as",
+    "explanation": "\"As long as\" presents returning the car fully charged as the sufficient condition for borrowing it.",
+    "translation": "Ты можешь взять семейную машину при условии, что вернёшь её с полностью заряженной батареей.",
+    "example": "You may work from home as long as you join the morning call.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-012",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "wish-if-only",
+    "context": "friends-relationships",
+    "prompt": "I missed Leo's birthday dinner yesterday, and I regret it now. Which sentence expresses that past regret?",
+    "options": [
+      "I wish I had left work earlier that day.",
+      "I wish I could leave work earlier.",
+      "I hope I can leave work earlier today.",
+      "I left work early and attended the dinner."
+    ],
+    "answer": "I wish I had left work earlier that day.",
+    "explanation": "The missed dinner is a finished past event, so regret about changing it uses \"wish\" plus the past perfect: \"had left work earlier that day\".",
+    "translation": "Вчера я пропустил ужин в честь дня рождения Лео и теперь об этом жалею. Жаль, что в тот день я не ушёл с работы раньше.",
+    "example": "If only we had checked the date before sending the invitations.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-013",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "zero-conditional",
+    "context": "work-freelance",
+    "prompt": "The monitoring tool behaves the same way every time the server overheats. Which sentence states that technical fact?",
+    "options": [
+      "If the server temperature reaches 80°C, the monitor immediately sends an alert.",
+      "If the server temperature reaches 80°C tonight, the monitor will send an alert.",
+      "If the server temperature reached 80°C, the monitor would send an alert.",
+      "If the server temperature had reached 80°C, the monitor would have sent an alert."
+    ],
+    "answer": "If the server temperature reaches 80°C, the monitor immediately sends an alert.",
+    "explanation": "An automatic technical fact uses the present simple in both clauses: the temperature \"reaches\" the limit and the monitor \"sends\" an alert.",
+    "translation": "Средство мониторинга всегда работает одинаково: если температура сервера достигает 80 °C, система отправляет предупреждение.",
+    "example": "If the invoice total changes, the dashboard updates automatically.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-014",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "first-conditional",
+    "context": "education",
+    "prompt": "The lecturer may upload the slides tonight. Which sentence treats this as a real future possibility and says what we can then do?",
+    "options": [
+      "If the lecturer posts the slides, we can review them before class.",
+      "If the lecturer posted the slides, we could review them before class.",
+      "If the lecturer had posted the slides, we could have reviewed them before class.",
+      "When the lecturer posts slides, we review them before class."
+    ],
+    "answer": "If the lecturer posts the slides, we can review them before class.",
+    "explanation": "Posting the slides is a real future possibility, so the if-clause uses the present simple and the result uses \"can\" for future access.",
+    "translation": "Если преподаватель загрузит слайды, мы сможем просмотреть их перед занятием.",
+    "example": "If the library stays open late tonight, we may use the study rooms after class.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-015",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "second-conditional",
+    "context": "technology-messaging",
+    "prompt": "A suspicious link has appeared in your group chat. Which sentence gives advice by imagining the speaker in your position?",
+    "options": [
+      "If I were you, I would delete the suspicious message right away.",
+      "If I delete the message, the link will disappear from my screen.",
+      "If the filter detects suspicious links, it blocks them automatically.",
+      "If I had deleted the message earlier, nobody would have opened the link."
+    ],
+    "answer": "If I were you, I would delete the suspicious message right away.",
+    "explanation": "\"If I were you\" introduces an imagined present position, and \"would delete\" gives the speaker's advice.",
+    "translation": "На твоём месте я бы сразу удалил подозрительное сообщение.",
+    "example": "If I were in Anya's position, I would ask the landlord for a written repair schedule.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-016",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "unless",
+    "context": "shopping-money-services",
+    "prompt": "The service normally requires prepayment, but approved business accounts are exempt. Which sentence states that exception?",
+    "options": [
+      "Orders require prepayment unless the customer has an approved business account.",
+      "Orders require prepayment even if the customer has an approved business account.",
+      "Orders require prepayment because the customer has an approved business account.",
+      "Orders require prepayment as long as the customer has an approved business account."
+    ],
+    "answer": "Orders require prepayment unless the customer has an approved business account.",
+    "explanation": "\"Unless\" marks the exception to the rule: orders from approved business accounts are the only ones that do not require prepayment.",
+    "translation": "Заказы требуют предоплаты, кроме случаев, когда у клиента есть подтверждённый корпоративный аккаунт.",
+    "example": "Returns need a receipt unless the item is faulty.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-017",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "condition-markers",
+    "context": "housing-repairs",
+    "prompt": "The roof is dry now, but heavy rain is forecast. Which sentence describes a precaution taken before any leak occurs?",
+    "options": [
+      "We placed buckets in the attic in case water comes through overnight.",
+      "We will place buckets in the attic if water comes through overnight.",
+      "We placed buckets in the attic because water came through overnight.",
+      "We place buckets in the attic whenever water comes through overnight."
+    ],
+    "answer": "We placed buckets in the attic in case water comes through overnight.",
+    "explanation": "\"In case\" explains a precaution taken before a possible problem. The other sentences describe a future response, an action caused by an actual leak, or a repeated response to leaks.",
+    "translation": "Сейчас крыша не протекает, но обещают сильный дождь. Мы заранее поставили вёдра на чердаке на случай, если ночью просочится вода.",
+    "example": "Keep a spare fuse nearby in case the lights go out again.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-018",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "zero-conditional",
+    "context": "travel-transport",
+    "prompt": "The station guide is explaining the gate's standard behaviour, not predicting one particular trip. Which sentence states the automatic rule?",
+    "options": [
+      "If a passenger taps a valid card, the gate opens automatically.",
+      "If a passenger taps a valid card tonight, the gate will open.",
+      "If a passenger tapped a valid card, the gate would open.",
+      "If a passenger had tapped a valid card, the gate would have opened."
+    ],
+    "answer": "If a passenger taps a valid card, the gate opens automatically.",
+    "explanation": "A standard automatic rule uses the present simple in both clauses: a passenger \"taps\" and the gate \"opens\".",
+    "translation": "Если пассажир прикладывает действующую карту, турникет открывается автоматически.",
+    "example": "If a flight is cancelled, the app displays rebooking options.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-019",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "first-conditional",
+    "context": "food-health-fitness",
+    "prompt": "You are about to start a long run in hot weather. If you do not take water, you ___ dehydrated.",
+    "options": [
+      "will get",
+      "would get",
+      "got",
+      "would have become"
+    ],
+    "answer": "will get",
+    "explanation": "This is a warning about one specific upcoming run, so the real future condition uses the present simple after \"if\" and \"will get\" in the result. The other choices describe unreal or past situations.",
+    "translation": "Ты собираешься на долгую пробежку в жару. Если не возьмёшь воду, ты обезвожишься.",
+    "example": "If the pain returns tonight, I will call the clinic.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-020",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "second-conditional",
+    "context": "entertainment-planning-conflict",
+    "prompt": "The concert is sold out, so we cannot go. If tickets were still available, we ___ seats near the stage.",
+    "options": [
+      "would choose",
+      "will choose",
+      "choose",
+      "chose"
+    ],
+    "answer": "would choose",
+    "explanation": "Tickets are not available in reality, so the imagined choice uses \"were\" in the if-clause and \"would choose\" in the result.",
+    "translation": "Билеты на концерт распроданы, поэтому мы не можем пойти. Если бы билеты ещё были, мы выбрали бы места рядом со сценой.",
+    "example": "If I had a free evening, I would join the film club.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-021",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "condition-markers",
+    "context": "home-family",
+    "prompt": "Mum will repaint the kitchen regardless of what the rest of the family thinks. She will do it ___ everyone else prefers the old colour.",
+    "options": [
+      "even if",
+      "only if",
+      "unless",
+      "because"
+    ],
+    "answer": "even if",
+    "explanation": "\"Even if\" shows that the result will not change: Mum will repaint the kitchen regardless of the family's preference.",
+    "translation": "Мама перекрасит кухню независимо от мнения остальных. Она сделает это, даже если всем остальным больше нравится прежний цвет.",
+    "example": "We will eat outside even if it gets a little cold.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-022",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "zero-conditional",
+    "context": "friends-relationships",
+    "prompt": "Which sentence states a general truth about supportive conversations, using the present simple in both clauses?",
+    "options": [
+      "If someone listens without interrupting, people speak more openly.",
+      "If Mara listens tonight, Leo will explain the problem.",
+      "If everyone listened more carefully, meetings would feel calmer.",
+      "If I had listened yesterday, I would have understood the disagreement."
+    ],
+    "answer": "If someone listens without interrupting, people speak more openly.",
+    "explanation": "The sentence describes a general relationship pattern, so both the condition \"listens\" and the result \"speak\" are in the present simple.",
+    "translation": "Если человек слушает, не перебивая, люди говорят более открыто.",
+    "example": "If friends trust each other, they share problems more easily.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-023",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "first-conditional",
+    "context": "work-freelance",
+    "prompt": "The client may approve the draft this afternoon. If she approves it, I ___ the final files tonight.",
+    "options": [
+      "will send",
+      "would send",
+      "sent",
+      "would have sent"
+    ],
+    "answer": "will send",
+    "explanation": "The approval may genuinely happen this afternoon. English keeps the verb after \"if\" in the present (\"approves\") and marks the consequence with \"will send\"; the remaining forms make the situation unreal or past.",
+    "translation": "Клиентка может утвердить черновик сегодня днём. Если она его утвердит, я отправлю итоговые файлы вечером.",
+    "example": "If the payment arrives tomorrow, we will book the studio.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-024",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "second-conditional",
+    "context": "education",
+    "prompt": "Our school does not have a recording studio. If it had one, students ___ their own podcasts.",
+    "options": [
+      "would produce",
+      "will produce",
+      "produce",
+      "produced"
+    ],
+    "answer": "would produce",
+    "explanation": "The studio does not exist now, so the hypothetical present condition uses \"had\" and the result uses \"would\" plus the base verb \"produce\".",
+    "translation": "В нашей школе нет студии звукозаписи. Если бы она была, ученики создавали бы собственные подкасты.",
+    "example": "If the course were online, I would attend from home.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-025",
+    "type": "multiple_choice",
+    "level": "easy",
+    "topic": "zero-conditional",
+    "context": "technology-messaging",
+    "prompt": "This is my regular support workflow: If a message contains an order number, I ___ the conversation to the customer's account record.",
+    "options": [
+      "always attach",
+      "would always attach",
+      "always attached",
+      "would always have attached"
+    ],
+    "answer": "always attach",
+    "explanation": "The sentence describes a current repeated workflow, so \"contains\" and \"attach\" use the present simple; \"always\" reinforces the routine meaning. The other choices describe a hypothetical habit, a past habit, or a past counterfactual result.",
+    "translation": "Это мой обычный порядок работы в поддержке: если в сообщении есть номер заказа, я всегда прикрепляю переписку к записи в аккаунте клиента.",
+    "example": "If the app freezes, I restart it before replying to anyone.",
+    "shuffleOptions": true
+  }
+]

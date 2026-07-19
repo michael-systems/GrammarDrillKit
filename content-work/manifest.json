@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "branch": "content/sol-ultra-1050",
+  "origin": "https://github.com/michael-systems/GrammarDrillKit.git",
+  "blueprint": "reports/content-blueprint.json",
+  "targetQuestionCount": 1050,
+  "integratedModules": ["phrasal-verbs", "conditionals"],
+  "nextModule": "modal-verbs",
+  "checkpoint": {
+    "status": "conditionals-integrated-paused-before-modal-verbs",
+    "completedAt": "2026-07-18T21:01:00+03:00",
+    "moduleValidator": {
+      "command": "node scripts/validate-content.mjs --module conditionals",
+      "status": "PASS",
+      "errors": 0,
+      "warnings": 0
+    },
+    "tests": {
+      "command": "node --test",
+      "status": "PASS",
+      "passed": 44,
+      "failed": 0
+    },
+    "semanticAudit": {
+      "questionsRechecked": 100,
+      "finalAuditQuestionsRewritten": 18,
+      "nearDuplicateClustersResolved": 10,
+      "secondAnswerRisksResolved": 1,
+      "topicLeakageItemsResolved": 2,
+      "remainingHighConfidenceDuplicates": 0
+    },
+    "pausedByUser": true
+  },
+  "editorialProtocol": {
+    "packageSize": 25,
+    "roles": ["root-orchestrator", "author", "adversarial-editor", "blind-examiner"],
+    "requiredStages": ["drafted", "reviewed", "corrected", "examined", "validated", "approved"],
+    "maximumRewriteCycles": 3
+  },
+  "totals": {
+    "drafted": 250,
+    "reviewed": 250,
+    "accepted": 250,
+    "rewriteDecisions": 142,
+    "rejectDecisions": 1,
+    "replacedQuestions": 1
+  },
+  "packages": [
+    {"id": "phrasal-verbs-001-025", "module": "phrasal-verbs", "start": 1, "end": 25, "status": "approved", "editorVerdicts": {"ACCEPT": 16, "REWRITE": 10, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 28, "REWRITE": 8, "REJECT": 1}, "approvedFile": "content-work/approved/phrasal-verbs-001-025.json", "approvedFileSha256": "77f2a0fccae19fe557a4e46f25320493a5556e1e4ebb32a9332badf1f129caa0"},
+    {"id": "phrasal-verbs-026-050", "module": "phrasal-verbs", "start": 26, "end": 50, "status": "approved", "editorVerdicts": {"ACCEPT": 16, "REWRITE": 9, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 25, "REWRITE": 3, "REJECT": 0}, "approvedFile": "content-work/approved/phrasal-verbs-026-050.json", "approvedFileSha256": "9da25b680b7f9e8c5911a8fecfa9e1e7662032c34f1945e6c1c94bdf89c5d594"},
+    {"id": "phrasal-verbs-051-075", "module": "phrasal-verbs", "start": 51, "end": 75, "status": "approved", "editorVerdicts": {"ACCEPT": 21, "REWRITE": 4, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 27, "REWRITE": 5, "REJECT": 0}, "approvedFile": "content-work/approved/phrasal-verbs-051-075.json", "approvedFileSha256": "eef0f90174a0c303f85cc2b1be46dfaf73a7232b8b9615ccd3a5f2224a35af3d"},
+    {"id": "phrasal-verbs-076-100", "module": "phrasal-verbs", "start": 76, "end": 100, "status": "approved", "editorVerdicts": {"ACCEPT": 19, "REWRITE": 6, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 28, "REWRITE": 7, "REJECT": 0}, "approvedFile": "content-work/approved/phrasal-verbs-076-100.json", "approvedFileSha256": "1d5ad233a89f6f367e0bb051c1a71499b805e221cd2d17f6d9b94aaf9b00463e"},
+    {"id": "phrasal-verbs-101-125", "module": "phrasal-verbs", "start": 101, "end": 125, "status": "approved", "editorVerdicts": {"ACCEPT": 14, "REWRITE": 11, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 26, "REWRITE": 5, "REJECT": 0}, "approvedFile": "content-work/approved/phrasal-verbs-101-125.json", "approvedFileSha256": "007ab1559e18b9ace75c1003ba05125d897da086ced7ae5168f16e137d40a1cb"},
+    {"id": "phrasal-verbs-126-150", "module": "phrasal-verbs", "start": 126, "end": 150, "status": "approved", "editorVerdicts": {"ACCEPT": 15, "REWRITE": 10, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 28, "REWRITE": 7, "REJECT": 0}, "approvedFile": "content-work/approved/phrasal-verbs-126-150.json", "approvedFileSha256": "deeff936737d7c790fa5ff57c7980f955f9be4ba853c56fa6561125be7a35433"},
+    {"id": "conditionals-001-025", "module": "conditionals", "start": 1, "end": 25, "status": "approved", "editorVerdicts": {"ACCEPT": 16, "REWRITE": 9, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 27, "REWRITE": 2, "REJECT": 0}, "approvedFile": "content-work/approved/conditionals-001-025.json", "approvedFileSha256": "8ad4eb4fbb622868b66faef2c4fcdb1ae657da9142ae854d1901863367af4729"},
+    {"id": "conditionals-026-050", "module": "conditionals", "start": 26, "end": 50, "status": "approved", "editorVerdicts": {"ACCEPT": 19, "REWRITE": 6, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 27, "REWRITE": 3, "REJECT": 0}, "approvedFile": "content-work/approved/conditionals-026-050.json", "approvedFileSha256": "c844199e6e147989bf9e603da962dc15afede61adfc9f99e4ff9d4e38739eab2"},
+    {"id": "conditionals-051-075", "module": "conditionals", "start": 51, "end": 75, "status": "approved", "editorVerdicts": {"ACCEPT": 15, "REWRITE": 10, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 37, "REWRITE": 5, "REJECT": 0}, "approvedFile": "content-work/approved/conditionals-051-075.json", "approvedFileSha256": "59a8f095800e52ce74051b96c613f9c596412f3c80be40bee60f58e07c5497d1"},
+    {"id": "conditionals-076-100", "module": "conditionals", "start": 76, "end": 100, "status": "approved", "editorVerdicts": {"ACCEPT": 9, "REWRITE": 16, "REJECT": 0}, "blindVerdicts": {"ACCEPT": 27, "REWRITE": 6, "REJECT": 0}, "approvedFile": "content-work/approved/conditionals-076-100.json", "approvedFileSha256": "b7c65ea0c8b18c0befdeeb292862babc83ec4a63ea20f84fa4608faaae330612"},
+    {"id": "modal-verbs-001-025", "module": "modal-verbs", "start": 1, "end": 25, "status": "planned"},
+    {"id": "modal-verbs-026-050", "module": "modal-verbs", "start": 26, "end": 50, "status": "planned"},
+    {"id": "modal-verbs-051-075", "module": "modal-verbs", "start": 51, "end": 75, "status": "planned"},
+    {"id": "modal-verbs-076-100", "module": "modal-verbs", "start": 76, "end": 100, "status": "planned"},
+    {"id": "tenses-active-001-025", "module": "tenses-active", "start": 1, "end": 25, "status": "planned"},
+    {"id": "tenses-active-026-050", "module": "tenses-active", "start": 26, "end": 50, "status": "planned"},
+    {"id": "tenses-active-051-075", "module": "tenses-active", "start": 51, "end": 75, "status": "planned"},
+    {"id": "tenses-active-076-100", "module": "tenses-active", "start": 76, "end": 100, "status": "planned"},
+    {"id": "tenses-passive-001-025", "module": "tenses-passive", "start": 1, "end": 25, "status": "planned"},
+    {"id": "tenses-passive-026-050", "module": "tenses-passive", "start": 26, "end": 50, "status": "planned"},
+    {"id": "tenses-passive-051-075", "module": "tenses-passive", "start": 51, "end": 75, "status": "planned"},
+    {"id": "tenses-passive-076-100", "module": "tenses-passive", "start": 76, "end": 100, "status": "planned"},
+    {"id": "articles-001-025", "module": "articles", "start": 1, "end": 25, "status": "planned"},
+    {"id": "articles-026-050", "module": "articles", "start": 26, "end": 50, "status": "planned"},
+    {"id": "articles-051-075", "module": "articles", "start": 51, "end": 75, "status": "planned"},
+    {"id": "articles-076-100", "module": "articles", "start": 76, "end": 100, "status": "planned"},
+    {"id": "prepositions-001-025", "module": "prepositions", "start": 1, "end": 25, "status": "planned"},
+    {"id": "prepositions-026-050", "module": "prepositions", "start": 26, "end": 50, "status": "planned"},
+    {"id": "prepositions-051-075", "module": "prepositions", "start": 51, "end": 75, "status": "planned"},
+    {"id": "prepositions-076-100", "module": "prepositions", "start": 76, "end": 100, "status": "planned"},
+    {"id": "gerund-infinitive-001-025", "module": "gerund-infinitive", "start": 1, "end": 25, "status": "planned"},
+    {"id": "gerund-infinitive-026-050", "module": "gerund-infinitive", "start": 26, "end": 50, "status": "planned"},
+    {"id": "gerund-infinitive-051-075", "module": "gerund-infinitive", "start": 51, "end": 75, "status": "planned"},
+    {"id": "gerund-infinitive-076-100", "module": "gerund-infinitive", "start": 76, "end": 100, "status": "planned"},
+    {"id": "word-order-questions-001-025", "module": "word-order-questions", "start": 1, "end": 25, "status": "planned"},
+    {"id": "word-order-questions-026-050", "module": "word-order-questions", "start": 26, "end": 50, "status": "planned"},
+    {"id": "word-order-questions-051-075", "module": "word-order-questions", "start": 51, "end": 75, "status": "planned"},
+    {"id": "word-order-questions-076-100", "module": "word-order-questions", "start": 76, "end": 100, "status": "planned"},
+    {"id": "reported-speech-001-025", "module": "reported-speech", "start": 1, "end": 25, "status": "planned"},
+    {"id": "reported-speech-026-050", "module": "reported-speech", "start": 26, "end": 50, "status": "planned"},
+    {"id": "reported-speech-051-075", "module": "reported-speech", "start": 51, "end": 75, "status": "planned"},
+    {"id": "reported-speech-076-100", "module": "reported-speech", "start": 76, "end": 100, "status": "planned"}
+  ]
+}

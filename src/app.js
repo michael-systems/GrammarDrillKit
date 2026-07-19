@@ -1,8 +1,18 @@
-import { modules, getModuleById } from './module-registry.js';
-import { calculateScore, checkAnswer, prepareQuestion } from './quiz-engine.js';
-import { MODE_LABELS, SESSION_MODES, planSession } from './session-planner.js';
-import { formatLevel, shuffleArray } from './utilities.js';
-import { createBrowserProgressStore, THEMES, INTERFACE_SIZES, DEFAULT_INTERFACE_SIZE } from './storage.js';
+import { modules, getModuleById } from './module-registry.js?v=20260719-session-size';
+import { calculateScore, checkAnswer } from './quiz-engine.js?v=20260719-session-size';
+import {
+  createMistakesReviewSession,
+  MODE_LABELS,
+  SESSION_MODES,
+  planSession,
+} from './session-planner.js?v=20260719-session-size';
+import { formatLevel } from './utilities.js?v=20260719-session-size';
+import {
+  createBrowserProgressStore,
+  THEMES,
+  INTERFACE_SIZES,
+  DEFAULT_INTERFACE_SIZE,
+} from './storage.js?v=20260719-session-size';
 
 const app = document.querySelector('#app');
 const progressStore = createBrowserProgressStore();
@@ -179,7 +189,7 @@ function renderSelection() {
 
   const levelField = createField('Difficulty', 'level');
   const levelSelect = levelField.querySelector('select');
-  [['easy', 'Easy'], ['medium', 'Medium'], ['hard', 'Hard']].forEach(([value, label]) => {
+  [['all', 'All levels'], ['easy', 'Easy'], ['medium', 'Medium'], ['hard', 'Hard']].forEach(([value, label]) => {
     const option = document.createElement('option');
     option.value = value;
     option.textContent = label;
@@ -342,12 +352,9 @@ function renderSelection() {
   });
   reviewButton.addEventListener('click', () => {
     const formData = new FormData(form);
-    const reviewSize = formData.get('size') === 'all'
-      ? undefined
-      : Number(formData.get('size'));
-    const mistakes = shuffleArray(getMistakeQuestions())
-      .slice(0, reviewSize)
-      .map((question) => prepareQuestion(question));
+    const mistakes = createMistakesReviewSession(getMistakeQuestions(), {
+      size: formData.get('size'),
+    });
     startSession(mistakes, { mode: 'review', moduleId: null, moduleIds: [] });
   });
   resetButton.addEventListener('click', () => {

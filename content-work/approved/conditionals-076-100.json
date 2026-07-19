@@ -1,0 +1,477 @@
+[
+  {
+    "id": "conditionals-076",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "wish-if-only",
+    "context": "work-freelance",
+    "prompt": "The fixed-price project took twice as long as expected because I accepted it without checking the scope. I wish I ___ the requirements more carefully first.",
+    "options": [
+      "had reviewed",
+      "reviewed",
+      "would review",
+      "have reviewed"
+    ],
+    "answer": "had reviewed",
+    "explanation": "The speaker regrets an action not taken before a completed past decision. \"Wish\" therefore takes the past perfect form \"had reviewed.\"",
+    "translation": "Проект с фиксированной оплатой занял вдвое больше времени, чем ожидалось, потому что я согласился на него, не проверив объём работ. Жаль, что я сначала не изучил требования внимательнее.",
+    "example": "If only we had recorded the client's approval before starting the revisions.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-077",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "formal-inversion",
+    "context": "education",
+    "prompt": "Replace \"If you should have any questions\" with an equally formal inverted opening: ___ while using the archive, contact the librarian on duty.",
+    "options": [
+      "Should you have any questions",
+      "Had you had any questions",
+      "Were you having any questions",
+      "Would you have any questions"
+    ],
+    "answer": "Should you have any questions",
+    "explanation": "Removing \"if\" from a formal possible future condition places \"should\" before the subject: \"Should you have any questions.\"",
+    "translation": "Если во время работы с архивом у вас возникнут вопросы, обратитесь к дежурному библиотекарю.",
+    "example": "Should a candidate need extra paper, the examiner will provide it.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-078",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "second-conditional",
+    "context": "technology-messaging",
+    "prompt": "My account is limited to moderator access, so I cannot restore deleted channels. If I ___ owner permissions, I could restore them myself.",
+    "options": [
+      "had",
+      "had had",
+      "will have",
+      "would have"
+    ],
+    "answer": "had",
+    "explanation": "The permissions are absent now, so the second conditional uses past simple \"had\" for the unreal present situation and \"could restore\" for the imagined ability.",
+    "translation": "Моя учётная запись имеет только права модератора, поэтому я не могу восстанавливать удалённые каналы. Если бы у меня были права владельца, я мог бы восстановить их сам.",
+    "example": "If this platform allowed guest accounts, we could invite the external designer.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-079",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "shopping-money-services",
+    "prompt": "The courier took my order to an old address because I had not updated my customer profile. Had I updated it, the parcel ___ across town.",
+    "options": [
+      "would not have gone",
+      "would not go",
+      "did not go",
+      "will not have gone"
+    ],
+    "answer": "would not have gone",
+    "explanation": "\"Had I updated it\" is an inverted unreal past condition. Its changed past outcome requires \"would not have\" plus the past participle \"gone.\"",
+    "translation": "Курьер отвёз мой заказ по старому адресу, потому что я не обновил данные в профиле клиента. Если бы я обновил их, посылка не оказалась бы на другом конце города.",
+    "example": "Had the cashier scanned the coupon, the final total would have been lower.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-080",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "housing-repairs",
+    "prompt": "I am still highly sensitive to solvent fumes, which is why I hired a decorator last weekend. If I ___ so sensitive, I would have painted the bedroom myself.",
+    "options": [
+      "were not",
+      "would not have been",
+      "would not be",
+      "am not"
+    ],
+    "answer": "were not",
+    "explanation": "The unreal condition describes a current characteristic, so it takes second-conditional \"were not.\" The result, \"would have painted,\" refers to a past decision.",
+    "translation": "Я по-прежнему очень чувствителен к парам растворителя, поэтому в прошлые выходные нанял маляра. Если бы я не был таким чувствительным, то сам покрасил бы спальню.",
+    "example": "If Mara were not afraid of heights, she would have repaired the gutter yesterday.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-081",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "condition-markers",
+    "context": "travel-transport",
+    "prompt": "Airport Wi-Fi is usually reliable, but outages are possible. Before leaving home, save an offline copy of your boarding pass ___ the airport Wi-Fi is unavailable.",
+    "options": [
+      "in case",
+      "only if",
+      "unless",
+      "provided that"
+    ],
+    "answer": "in case",
+    "explanation": "\"In case\" gives the reason for taking a precaution now against a possible later problem. It does not make saving the pass conditional on the Wi-Fi already being unavailable.",
+    "translation": "Wi-Fi в аэропорту обычно работает надёжно, но сбои возможны. Перед выходом из дома сохраните посадочный талон офлайн на случай, если Wi-Fi окажется недоступен.",
+    "example": "Take a photo of the parking level in case you forget where the car is.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-082",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "wish-if-only",
+    "context": "food-health-fitness",
+    "prompt": "Marco keeps answering work calls in the middle of yoga class. Choose the form that presents this as an irritated complaint about a habit he can change: I wish Marco ___ calls during the session.",
+    "options": [
+      "would stop taking",
+      "had stopped taking",
+      "takes",
+      "will stop taking"
+    ],
+    "answer": "would stop taking",
+    "explanation": "Because the repeated habit is under Marco's control, \"wish\" plus \"would\" expresses irritation and a desire for him to change his behaviour.",
+    "translation": "Марко постоянно отвечает на рабочие звонки посреди занятия йогой. Хотелось бы, чтобы он перестал принимать звонки во время занятия.",
+    "example": "I wish the café would stop listing allergens in such tiny print.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-083",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "formal-inversion",
+    "context": "entertainment-planning-conflict",
+    "prompt": "We did not check the venue rules and arrived with a camera that was not allowed inside. ___ the rules, we would have left the camera at home.",
+    "options": [
+      "Had we checked",
+      "Were we to check",
+      "Should we check",
+      "If we have checked"
+    ],
+    "answer": "Had we checked",
+    "explanation": "Omitting \"if\" in a third conditional moves the auxiliary \"had\" before the subject. The result then takes the perfect conditional form \"would have left.\"",
+    "translation": "Мы не проверили правила площадки и пришли с камерой, которую нельзя было проносить внутрь. Если бы мы проверили правила, то оставили бы камеру дома.",
+    "example": "Had the stage crew tested the backup generator, the performance would not have ended early.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-084",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "home-family",
+    "prompt": "I did not label the moving boxes, so finding the kettle took an hour. If I had labelled the kitchen boxes, I ___ it immediately.",
+    "options": [
+      "would have found",
+      "would find",
+      "had found",
+      "would be finding"
+    ],
+    "answer": "would have found",
+    "explanation": "The unreal condition and its imagined result are both finished past events. The third conditional pairs \"had labelled\" with \"would have found.\"",
+    "translation": "Я не подписал коробки при переезде, поэтому искал чайник целый час. Если бы я подписал коробки с кухонными вещами, то сразу нашёл бы его.",
+    "example": "If Dad had charged the drill, we would have finished assembling the shelves.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-085",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "friends-relationships",
+    "prompt": "Joining the debate club ten years ago shaped Leila's lasting confidence in difficult conversations. If she had not joined it, she ___ so self-assured today.",
+    "options": [
+      "would not be",
+      "would not have been",
+      "will not be",
+      "were not"
+    ],
+    "answer": "would not be",
+    "explanation": "The if-clause names an unreal past choice, but the result is a long-term trait visible today. The mixed conditional therefore uses the present result \"would not be.\"",
+    "translation": "Участие в дискуссионном клубе десять лет назад сформировало устойчивую уверенность Лейлы в сложных разговорах. Если бы она не вступила в клуб, сегодня она не была бы такой уверенной в себе.",
+    "example": "If Omar had not moved so often as a child, he might be less adaptable now.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-086",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "wish-if-only",
+    "context": "work-freelance",
+    "prompt": "A technical restriction prevents me from moving client records to another service. I wish I ___ the data in an open format.",
+    "options": [
+      "could export",
+      "can export",
+      "will export",
+      "would have exported"
+    ],
+    "answer": "could export",
+    "explanation": "\"Wish\" plus \"could\" expresses a present ability the speaker wants but does not have. The platform currently makes exporting impossible.",
+    "translation": "Техническое ограничение не позволяет мне перенести данные клиентов в другой сервис. Жаль, что я не могу экспортировать их в открытом формате.",
+    "example": "I wish I could delegate invoice reminders to the accounting tool.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-087",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "formal-inversion",
+    "context": "education",
+    "prompt": "Rewrite \"If the archive were available in digital form\" with formal inversion: ___, more students would consult it.",
+    "options": [
+      "Were the archive available in digital form",
+      "Had the archive been available in digital form",
+      "Should the archive be available in digital form",
+      "Would the archive be available in digital form"
+    ],
+    "answer": "Were the archive available in digital form",
+    "explanation": "Inverting a hypothetical condition with \"were\" removes \"if\" and places \"were\" before the subject: \"Were the archive available.\"",
+    "translation": "Будь архив доступен в цифровом формате, к нему обращалось бы больше студентов.",
+    "example": "Were the course less theory-heavy, it would appeal to more practitioners.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-088",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "technology-messaging",
+    "prompt": "My filter archived the beta invitation, and I saw it only after registration had closed and the programme itself had ended. If the filter had left it in my inbox, I ___ the programme.",
+    "options": [
+      "might have joined",
+      "might join",
+      "could join",
+      "would be joining"
+    ],
+    "answer": "might have joined",
+    "explanation": "Both registration and the programme are over, so the unreal condition and its possible result belong entirely to the past. \"Might have joined\" is the required perfect-modal result; \"would be joining\" would describe a current or future result.",
+    "translation": "Фильтр отправил приглашение в программу бета-тестирования в архив, и я увидел его только после закрытия регистрации и завершения самой программы. Если бы письмо осталось во входящих, я, возможно, присоединился бы к программе.",
+    "example": "Had the team enabled version history, they could have recovered the deleted paragraph.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-089",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "shopping-money-services",
+    "prompt": "The retailer still does not deliver to my island, which is why I missed last week's sale. If the retailer ___ here, I would have ordered the desk.",
+    "options": [
+      "delivered",
+      "delivers",
+      "would deliver",
+      "has delivered"
+    ],
+    "answer": "delivered",
+    "explanation": "The delivery policy is a current fact contrary to the imagined condition, so the if-clause uses second-conditional past simple. \"Would have ordered\" gives the past result.",
+    "translation": "Магазин по-прежнему не доставляет товары на мой остров, поэтому я не смог воспользоваться распродажей на прошлой неделе. Если бы магазин доставлял сюда товары, я бы заказал письменный стол.",
+    "example": "If Dana were comfortable with public speaking, she would have presented the proposal yesterday.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-090",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "formal-inversion",
+    "context": "housing-repairs",
+    "prompt": "The repair guide uses a formal possible future condition. ___ after the ceiling dries, shut off the water and call the contractor.",
+    "options": [
+      "Should the leak reappear",
+      "Had the leak reappeared",
+      "Were the leak reappeared",
+      "Would the leak reappear"
+    ],
+    "answer": "Should the leak reappear",
+    "explanation": "\"Should\" before the subject creates a formal inverted condition meaning \"If the leak should reappear\" and refers to a possible future event.",
+    "translation": "Если протечка снова появится после высыхания потолка, перекройте воду и вызовите подрядчика.",
+    "example": "Should the new lock jam, use the service entrance and notify reception.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-091",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "travel-transport",
+    "prompt": "The tour leader ignored the storm alert, so the group was stranded after the ferry stopped running. If he had taken the alert seriously, he ___ an earlier crossing.",
+    "options": [
+      "would have booked",
+      "would book",
+      "had booked",
+      "could be booking"
+    ],
+    "answer": "would have booked",
+    "explanation": "The leader really ignored the alert; \"if he had taken it seriously\" presents the unreal past alternative. The third conditional uses \"would have booked\" for its imagined past result.",
+    "translation": "Руководитель группы проигнорировал штормовое предупреждение, поэтому после отмены паромов группа не смогла уехать. Если бы он отнёсся к предупреждению серьёзно, то забронировал бы более ранний рейс.",
+    "example": "If the mechanic had replaced the worn belt, the coach would not have broken down.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-092",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "food-health-fitness",
+    "prompt": "I abandoned the rehabilitation plan after two weeks, and my knee is still too weak for running. If I had followed the plan, I ___ without pain now.",
+    "options": [
+      "could run",
+      "could have run",
+      "can run",
+      "had run"
+    ],
+    "answer": "could run",
+    "explanation": "The unreal condition is a past failure, while the imagined ability belongs to the present. This mixed conditional uses \"had followed\" with \"could run now.\"",
+    "translation": "Я забросил программу реабилитации через две недели, и моё колено всё ещё слишком слабое для бега. Если бы я следовал программе, сейчас я мог бы бегать без боли.",
+    "example": "If Elena had taken the antibiotics as prescribed, the infection might be gone now.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-093",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "entertainment-planning-conflict",
+    "prompt": "We waited too long to reserve a rehearsal room, so the band had to practise outdoors. Had we booked on Monday, we ___ in the cold.",
+    "options": [
+      "would not have rehearsed",
+      "would not rehearse",
+      "did not rehearse",
+      "had not rehearsed"
+    ],
+    "answer": "would not have rehearsed",
+    "explanation": "\"Had we booked\" is an unreal earlier condition, and \"would not have rehearsed\" states how the completed past outcome would have changed.",
+    "translation": "Мы слишком долго тянули с бронированием репетиционной комнаты, поэтому группе пришлось репетировать на улице. Если бы мы забронировали её в понедельник, нам не пришлось бы репетировать на холоде.",
+    "example": "If the composer had cleared the sample, the label would have released the track.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-094",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "home-family",
+    "prompt": "My father remains fiercely independent, and that continuing attitude prevented us from arranging home care last month. If he ___ more willing to accept help, we would have arranged it then.",
+    "options": [
+      "were",
+      "would have been",
+      "would be",
+      "is"
+    ],
+    "answer": "were",
+    "explanation": "The condition is his continuing present attitude, so the reverse mixed conditional uses unreal present \"were.\" The result \"would have arranged\" looks back to last month.",
+    "translation": "Мой отец по-прежнему очень независим, и именно поэтому в прошлом месяце мы не смогли организовать уход за ним на дому. Если бы он охотнее принимал помощь, мы бы тогда всё устроили.",
+    "example": "If our toddler were a lighter sleeper, we would not have hosted dinner here yesterday.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-095",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "friends-relationships",
+    "prompt": "I recommended a former flatmate to Nina without disclosing that we knew each other, and she chose him. If I had disclosed the connection, she ___ someone else.",
+    "options": [
+      "would have chosen",
+      "would choose",
+      "chose",
+      "had chosen"
+    ],
+    "answer": "would have chosen",
+    "explanation": "The concealed prior relationship and Nina's choice are completed past events. The third conditional uses \"had disclosed\" and \"would have chosen.\"",
+    "translation": "Я порекомендовал Нине своего бывшего соседа по квартире, не сказав, что мы знакомы, и она выбрала его. Если бы я рассказал об этой связи, она выбрала бы кого-нибудь другого.",
+    "example": "If Pavel had explained the misunderstanding, his friends would have supported him.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-096",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "work-freelance",
+    "prompt": "Leo's first job in customer support shaped the patience he still shows with demanding clients. If he had not spent those years answering complaints, he ___ so calm under pressure now.",
+    "options": [
+      "would not be",
+      "would not have been",
+      "will not be",
+      "had not been"
+    ],
+    "answer": "would not be",
+    "explanation": "The past career choice produced a lasting present trait. The mixed conditional combines \"had not spent\" with the current result \"would not be.\"",
+    "translation": "Первая работа Лео в службе поддержки сформировала терпение, которое он до сих пор проявляет с требовательными клиентами. Если бы он не провёл те годы, отвечая на жалобы, сейчас он не был бы таким спокойным в напряжённых ситуациях.",
+    "example": "If I had not managed that chaotic launch, I might be less organised today.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-097",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "education",
+    "prompt": "The interviews have now finished. The selection panel rejected the application because it contained no writing sample. If the applicant had included one, the panel ___ her for an interview.",
+    "options": [
+      "might have shortlisted",
+      "might shortlist",
+      "could shortlist",
+      "would be shortlisting"
+    ],
+    "answer": "might have shortlisted",
+    "explanation": "The application process is over. \"Might have shortlisted\" expresses a possible missed past opportunity resulting from the unreal condition \"had included.\"",
+    "translation": "Собеседования уже завершились. Отборочная комиссия отклонила заявку, потому что в ней не было примера письменной работы. Если бы кандидат приложила такой пример, комиссия, возможно, пригласила бы её на собеседование.",
+    "example": "Had Jonas cited recent research, he could have strengthened his final argument.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-098",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "technology-messaging",
+    "prompt": "This laptop still lacks the security hardware required by the software, which is why yesterday's installation failed. If it ___ secure boot, I could have installed the client.",
+    "options": [
+      "supported",
+      "support",
+      "would support",
+      "has supported"
+    ],
+    "answer": "supported",
+    "explanation": "The missing support is a current hardware fact, so the unreal present condition takes past simple \"supported.\" \"Could have installed\" gives the unreal past result.",
+    "translation": "В этом ноутбуке до сих пор нет защитного оборудования, необходимого программе, поэтому вчера установить её не удалось. Если бы ноутбук поддерживал безопасную загрузку, я смог бы установить клиент.",
+    "example": "If our chat service allowed larger files, I could have sent the raw footage this morning.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-099",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "shopping-money-services",
+    "prompt": "You removed the hygiene seal before checking the returns notice, so the shop charged a restocking fee. If you ___ the notice first, you would not have opened the package.",
+    "options": [
+      "had read",
+      "were reading",
+      "would read",
+      "have read"
+    ],
+    "answer": "had read",
+    "explanation": "The sentence criticizes a past action by naming an unreal earlier cause. The if-clause needs past perfect \"had read\" before the result \"would not have opened.\"",
+    "translation": "Вы сняли защитную пломбу до того, как прочитали условия возврата, поэтому магазин удержал сбор за возврат товара. Если бы вы сначала прочитали условия, то не стали бы открывать упаковку.",
+    "example": "If I had compared the service plans, I would not have paid for unused features.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-100",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "housing-repairs",
+    "prompt": "The builder used interior-grade sealant outside, and the joint cracked during the first freeze. Had he used exterior-grade sealant, the joint ___ watertight through that first freeze.",
+    "options": [
+      "would have remained",
+      "would remain",
+      "remained",
+      "had remained"
+    ],
+    "answer": "would have remained",
+    "explanation": "The builder really used interior-grade sealant; \"Had he used exterior-grade sealant\" presents the unreal past alternative. The inverted third conditional therefore takes the perfect result \"would have remained.\"",
+    "translation": "Строитель использовал снаружи герметик для внутренних работ, и шов треснул при первых заморозках. Если бы он применил герметик для наружных работ, шов остался бы водонепроницаемым во время первых заморозков.",
+    "example": "If the surveyor had spotted the subsidence, the buyers would have withdrawn their offer.",
+    "shuffleOptions": true
+  }
+]
