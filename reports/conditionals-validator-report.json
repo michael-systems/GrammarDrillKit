@@ -1,0 +1,288 @@
+{
+  "valid": true,
+  "generatedAt": "2026-07-18T17:59:50.324Z",
+  "totals": {
+    "modules": 1,
+    "questions": 100,
+    "levels": {
+      "easy": 30,
+      "medium": 40,
+      "hard": 30
+    },
+    "errors": 0,
+    "warnings": 0
+  },
+  "modules": [
+    {
+      "id": "conditionals",
+      "title": "Conditionals",
+      "total": 100,
+      "levels": {
+        "easy": 30,
+        "medium": 40,
+        "hard": 30
+      },
+      "topics": {
+        "zero-conditional": {
+          "total": 10,
+          "levels": {
+            "easy": 6,
+            "medium": 4,
+            "hard": 0
+          }
+        },
+        "first-conditional": {
+          "total": 16,
+          "levels": {
+            "easy": 8,
+            "medium": 8,
+            "hard": 0
+          }
+        },
+        "second-conditional": {
+          "total": 16,
+          "levels": {
+            "easy": 7,
+            "medium": 7,
+            "hard": 2
+          }
+        },
+        "third-conditional": {
+          "total": 16,
+          "levels": {
+            "easy": 0,
+            "medium": 6,
+            "hard": 10
+          }
+        },
+        "mixed-conditional": {
+          "total": 12,
+          "levels": {
+            "easy": 0,
+            "medium": 4,
+            "hard": 8
+          }
+        },
+        "unless": {
+          "total": 8,
+          "levels": {
+            "easy": 3,
+            "medium": 4,
+            "hard": 1
+          }
+        },
+        "condition-markers": {
+          "total": 8,
+          "levels": {
+            "easy": 4,
+            "medium": 2,
+            "hard": 2
+          }
+        },
+        "wish-if-only": {
+          "total": 8,
+          "levels": {
+            "easy": 2,
+            "medium": 3,
+            "hard": 3
+          }
+        },
+        "formal-inversion": {
+          "total": 6,
+          "levels": {
+            "easy": 0,
+            "medium": 2,
+            "hard": 4
+          }
+        }
+      },
+      "contexts": {
+        "home-family": 10,
+        "friends-relationships": 10,
+        "work-freelance": 10,
+        "education": 10,
+        "technology-messaging": 10,
+        "shopping-money-services": 10,
+        "housing-repairs": 10,
+        "travel-transport": 10,
+        "food-health-fitness": 10,
+        "entertainment-planning-conflict": 10
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "heuristics": {
+    "normalizedPromptOpenings": [],
+    "nearDuplicatePrompts": [],
+    "repeatedExplanations": [],
+    "repeatedContexts": [
+      {
+        "value": "education",
+        "count": 10,
+        "ids": [
+          "conditionals-004",
+          "conditionals-014",
+          "conditionals-024",
+          "conditionals-031",
+          "conditionals-041",
+          "conditionals-051",
+          "conditionals-061",
+          "conditionals-077",
+          "conditionals-087",
+          "conditionals-097"
+        ]
+      },
+      {
+        "value": "entertainment planning conflict",
+        "count": 10,
+        "ids": [
+          "conditionals-010",
+          "conditionals-020",
+          "conditionals-030",
+          "conditionals-037",
+          "conditionals-047",
+          "conditionals-057",
+          "conditionals-067",
+          "conditionals-073",
+          "conditionals-083",
+          "conditionals-093"
+        ]
+      },
+      {
+        "value": "food health fitness",
+        "count": 10,
+        "ids": [
+          "conditionals-009",
+          "conditionals-019",
+          "conditionals-029",
+          "conditionals-036",
+          "conditionals-046",
+          "conditionals-056",
+          "conditionals-066",
+          "conditionals-072",
+          "conditionals-082",
+          "conditionals-092"
+        ]
+      },
+      {
+        "value": "friends relationships",
+        "count": 10,
+        "ids": [
+          "conditionals-002",
+          "conditionals-012",
+          "conditionals-022",
+          "conditionals-039",
+          "conditionals-049",
+          "conditionals-059",
+          "conditionals-069",
+          "conditionals-075",
+          "conditionals-085",
+          "conditionals-095"
+        ]
+      },
+      {
+        "value": "home family",
+        "count": 10,
+        "ids": [
+          "conditionals-001",
+          "conditionals-011",
+          "conditionals-021",
+          "conditionals-038",
+          "conditionals-048",
+          "conditionals-058",
+          "conditionals-068",
+          "conditionals-074",
+          "conditionals-084",
+          "conditionals-094"
+        ]
+      },
+      {
+        "value": "housing repairs",
+        "count": 10,
+        "ids": [
+          "conditionals-007",
+          "conditionals-017",
+          "conditionals-027",
+          "conditionals-034",
+          "conditionals-044",
+          "conditionals-054",
+          "conditionals-064",
+          "conditionals-080",
+          "conditionals-090",
+          "conditionals-100"
+        ]
+      },
+      {
+        "value": "shopping money services",
+        "count": 10,
+        "ids": [
+          "conditionals-006",
+          "conditionals-016",
+          "conditionals-026",
+          "conditionals-033",
+          "conditionals-043",
+          "conditionals-053",
+          "conditionals-063",
+          "conditionals-079",
+          "conditionals-089",
+          "conditionals-099"
+        ]
+      },
+      {
+        "value": "technology messaging",
+        "count": 10,
+        "ids": [
+          "conditionals-005",
+          "conditionals-015",
+          "conditionals-025",
+          "conditionals-032",
+          "conditionals-042",
+          "conditionals-052",
+          "conditionals-062",
+          "conditionals-078",
+          "conditionals-088",
+          "conditionals-098"
+        ]
+      },
+      {
+        "value": "travel transport",
+        "count": 10,
+        "ids": [
+          "conditionals-008",
+          "conditionals-018",
+          "conditionals-028",
+          "conditionals-035",
+          "conditionals-045",
+          "conditionals-055",
+          "conditionals-065",
+          "conditionals-071",
+          "conditionals-081",
+          "conditionals-091"
+        ]
+      },
+      {
+        "value": "work freelance",
+        "count": 10,
+        "ids": [
+          "conditionals-003",
+          "conditionals-013",
+          "conditionals-023",
+          "conditionals-040",
+          "conditionals-050",
+          "conditionals-060",
+          "conditionals-070",
+          "conditionals-076",
+          "conditionals-086",
+          "conditionals-096"
+        ]
+      }
+    ],
+    "repeatedOptionSets": []
+  },
+  "scope": "conditionals",
+  "productShell": {
+    "valid": true,
+    "errors": []
+  }
+}

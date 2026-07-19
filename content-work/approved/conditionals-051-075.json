@@ -1,0 +1,477 @@
+[
+  {
+    "id": "conditionals-051",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "second-conditional",
+    "context": "education",
+    "prompt": "The university has no plans to open a campus in Antarctica. If it did, Maya ___ for a place there.",
+    "options": [
+      "would apply",
+      "will apply",
+      "applied",
+      "would have applied"
+    ],
+    "answer": "would apply",
+    "explanation": "The imagined campus is an unlikely future possibility, so the result clause takes would plus the base verb: \"would apply.\"",
+    "translation": "Университет не планирует открывать кампус в Антарктиде. Если бы он всё же открылся, Майя подала бы туда заявление.",
+    "example": "If our college introduced a course on game design, I might enrol.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-052",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "third-conditional",
+    "context": "technology-messaging",
+    "prompt": "Leo sent the private note to the entire company because he clicked \"Reply all.\" If he ___ the recipients more carefully, he would not have made that mistake.",
+    "options": [
+      "had checked",
+      "checked",
+      "would have checked",
+      "has checked"
+    ],
+    "answer": "had checked",
+    "explanation": "The message has already been sent, and the careful check did not happen. A third conditional therefore uses past perfect in the if-clause: \"had checked.\"",
+    "translation": "Лео отправил личную заметку всей компании, потому что нажал «Ответить всем». Если бы он внимательнее проверил получателей, то не допустил бы эту ошибку.",
+    "example": "If I had saved the draft before the update, I would not have lost two hours of work.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-053",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "mixed-conditional",
+    "context": "shopping-money-services",
+    "prompt": "Nina once lost a large deposit to a fake website. If that had not happened, she ___ so cautious with online purchases now.",
+    "options": [
+      "would not be",
+      "would not have been",
+      "is not",
+      "will not be"
+    ],
+    "answer": "would not be",
+    "explanation": "A past event caused Nina's continuing caution. The unreal past if-clause is followed by a present result with would plus the base verb: \"would not be.\"",
+    "translation": "Однажды Нина потеряла крупный задаток из-за поддельного сайта. Если бы этого не произошло, сейчас она не была бы так осторожна с покупками в интернете.",
+    "example": "If Lena had not volunteered at the animal shelter, she would be less confident handling nervous dogs today.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-054",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "unless",
+    "context": "housing-repairs",
+    "prompt": "Clearing the blocked hallway is the electrician's only remaining requirement. The electrician cannot start work tomorrow ___ we clear it tonight.",
+    "options": [
+      "unless",
+      "if",
+      "provided that",
+      "even if"
+    ],
+    "answer": "unless",
+    "explanation": "\"Unless\" means \"if we do not\" here: failing to clear the hallway will prevent the electrician from starting.",
+    "translation": "Освободить загромождённый коридор — единственное оставшееся требование электрика. Он не сможет начать работу завтра, если мы не освободим коридор сегодня вечером.",
+    "example": "The roofers will postpone the job unless the wind drops by morning.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-055",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "wish-if-only",
+    "context": "travel-transport",
+    "prompt": "Our only train leaves at five in the morning. I wish it ___ so early.",
+    "options": [
+      "did not leave",
+      "does not leave",
+      "would not have left",
+      "had not left"
+    ],
+    "answer": "did not leave",
+    "explanation": "The speaker regrets a present schedule, so wish is followed by a past-simple form: \"did not leave.\"",
+    "translation": "Наш единственный поезд отправляется в пять утра. Жаль, что он уходит так рано.",
+    "example": "I wish this bus stopped closer to the museum.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-056",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "zero-conditional",
+    "context": "food-health-fitness",
+    "prompt": "Whenever Amir skips his warm-up, his knees ___ during the first kilometre.",
+    "options": [
+      "ache",
+      "ached",
+      "would ache",
+      "would have ached"
+    ],
+    "answer": "ache",
+    "explanation": "\"Whenever\" introduces a repeatable cause and result, so the zero conditional uses present simple in both clauses: \"skips\" and \"ache.\"",
+    "translation": "Всякий раз, когда Амир пропускает разминку, на первом километре у него болят колени.",
+    "example": "If I drink coffee after dinner, I sleep badly.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-057",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "first-conditional",
+    "context": "entertainment-planning-conflict",
+    "prompt": "The outdoor screening depends on the weather. If the storm reaches the park before sunset, we ___ the event and issue refunds.",
+    "options": [
+      "will cancel",
+      "would cancel",
+      "cancelled",
+      "would have cancelled"
+    ],
+    "answer": "will cancel",
+    "explanation": "The storm remains a real future possibility, and its practical consequence takes \"will\" plus the base verb: \"will cancel.\"",
+    "translation": "Показ фильма под открытым небом зависит от погоды. Если гроза дойдёт до парка до заката, мы отменим мероприятие и вернём деньги.",
+    "example": "If the band starts late, the venue will shorten its final set.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-058",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "second-conditional",
+    "context": "home-family",
+    "prompt": "The freezer door is not sealing properly. If I were you, I ___ the food to a cooler before calling the repair service.",
+    "options": [
+      "would move",
+      "will move",
+      "moved",
+      "would have moved"
+    ],
+    "answer": "would move",
+    "explanation": "\"If I were you\" introduces hypothetical advice, so the recommendation uses would plus the base verb: \"would move.\"",
+    "translation": "Дверца морозильной камеры плохо закрывается. На твоём месте я бы переложил продукты в переносной холодильник, прежде чем звонить в ремонтную службу.",
+    "example": "If I were you, I would photograph the meter before the landlord arrives.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-059",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "third-conditional",
+    "context": "friends-relationships",
+    "prompt": "Priya stopped speaking to Sam because she believed a sarcastic message was serious. If someone ___ the joke to her, she would not have ended the friendship.",
+    "options": [
+      "had explained",
+      "explained",
+      "would explain",
+      "has explained"
+    ],
+    "answer": "had explained",
+    "explanation": "The misunderstanding and the end of the friendship are finished past events. The unreal earlier condition therefore takes the past perfect: \"had explained.\"",
+    "translation": "Прия перестала общаться с Сэмом, потому что приняла саркастическое сообщение всерьёз. Если бы кто-нибудь объяснил ей шутку, она бы не разорвала дружбу.",
+    "example": "If Mei had apologised earlier, Arjun would have answered her message.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-060",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "mixed-conditional",
+    "context": "work-freelance",
+    "prompt": "I still do not speak Japanese, so I did not volunteer to interpret at yesterday's meeting. If I ___ Japanese, I would have volunteered.",
+    "options": [
+      "spoke",
+      "would have spoken",
+      "would speak",
+      "have spoken"
+    ],
+    "answer": "spoke",
+    "explanation": "The if-clause describes a present fact that is still untrue, while \"would have volunteered\" describes its unreal past result. That mixed pattern requires past simple: \"spoke.\"",
+    "translation": "Я до сих пор не говорю по-японски, поэтому вчера на встрече не вызвался переводить. Если бы я говорил по-японски, я бы вызвался.",
+    "example": "If Marta were more confident with numbers, she would have applied for the finance role last week.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-061",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "unless",
+    "context": "education",
+    "prompt": "Approved accessibility arrangements are the only exemption to the printed-copy rule. A student must submit a printed copy ___ they have such arrangements.",
+    "options": [
+      "unless",
+      "if",
+      "provided that",
+      "as long as"
+    ],
+    "answer": "unless",
+    "explanation": "\"Unless\" introduces the sole exception to the printed-copy rule: students with approved arrangements do not have to follow it.",
+    "translation": "Утверждённые специальные условия доступности — единственное исключение из правила о печатной копии. Студент должен сдать печатную копию, если у него нет таких условий.",
+    "example": "Visitors may not use the archive room unless a librarian accompanies them.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-062",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "first-conditional",
+    "context": "technology-messaging",
+    "prompt": "Your account is awaiting moderator approval. If the moderator approves it today, the forum ___ private messaging immediately.",
+    "options": [
+      "will unlock",
+      "would unlock",
+      "unlocked",
+      "would have unlocked"
+    ],
+    "answer": "will unlock",
+    "explanation": "Approval today is a real future possibility, so the result clause uses \"will\" plus the base verb: \"will unlock.\"",
+    "translation": "Ваш аккаунт ожидает одобрения модератора. Если модератор одобрит его сегодня, форум сразу откроет доступ к личным сообщениям.",
+    "example": "If the battery drops below ten per cent, the phone will switch to power-saving mode.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-063",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "second-conditional",
+    "context": "shopping-money-services",
+    "prompt": "The parcel locker is too far from my office, so I never use it. If it ___ closer, I would choose it for every delivery.",
+    "options": [
+      "were",
+      "is",
+      "had been",
+      "would be"
+    ],
+    "answer": "were",
+    "explanation": "A closer location is contrary to the present reality, so the second-conditional if-clause uses the unreal past form \"were.\"",
+    "translation": "Постамат находится слишком далеко от моего офиса, поэтому я им не пользуюсь. Если бы он был ближе, я выбирал бы его для каждой доставки.",
+    "example": "If this coat were available in a longer length, I would buy it today.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-064",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "third-conditional",
+    "context": "housing-repairs",
+    "prompt": "The kitchen floor is ruined because the pipe leaked all weekend. If the plumber ___ the valve on Friday, the water would not have spread.",
+    "options": [
+      "had shut",
+      "shuts",
+      "would have shut",
+      "has shut"
+    ],
+    "answer": "had shut",
+    "explanation": "Closing the valve did not happen before the past leak. The third-conditional if-clause therefore needs past perfect: \"had shut.\"",
+    "translation": "Пол на кухне испорчен, потому что труба протекала все выходные. Если бы сантехник перекрыл вентиль в пятницу, вода бы не растеклась.",
+    "example": "If we had covered the furniture, the plaster dust would not have damaged it.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-065",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "first-conditional",
+    "context": "travel-transport",
+    "prompt": "If border control asks for proof of accommodation, ___ the hotel confirmation on your phone.",
+    "options": [
+      "show",
+      "will show",
+      "would show",
+      "showed"
+    ],
+    "answer": "show",
+    "explanation": "A first conditional can use an imperative in its result clause. The base form \"show\" gives the required instruction.",
+    "translation": "Если на пограничном контроле попросят подтверждение проживания, покажите бронь отеля на телефоне.",
+    "example": "If the road ahead is closed, take the next exit.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-066",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "second-conditional",
+    "context": "food-health-fitness",
+    "prompt": "Jules is not confident in the water, so he avoids the triathlon club. If he ___ more comfortable swimming, he would join its beginner group.",
+    "options": [
+      "felt",
+      "feels",
+      "had felt",
+      "would feel"
+    ],
+    "answer": "felt",
+    "explanation": "Jules's present lack of confidence is contrary to the imagined situation. The second-conditional if-clause therefore uses the past-simple form \"felt.\"",
+    "translation": "Жюль неуверенно чувствует себя в воде, поэтому избегает клуба триатлонистов. Если бы он увереннее чувствовал себя во время плавания, то присоединился бы к группе для начинающих.",
+    "example": "If the gym were closer, I would exercise there before breakfast.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-067",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "third-conditional",
+    "context": "entertainment-planning-conflict",
+    "prompt": "The organisers printed the wrong start time in the festival programme, so hundreds of guests arrived late. If they had proofread it, they ___ that confusion.",
+    "options": [
+      "could have avoided",
+      "could avoid",
+      "would avoid",
+      "had avoided"
+    ],
+    "answer": "could have avoided",
+    "explanation": "The programme has already caused the problem, so the possible unreal past result takes \"could have\" plus the past participle: \"could have avoided.\"",
+    "translation": "Организаторы напечатали в программе фестиваля неверное время начала, поэтому сотни гостей опоздали. Если бы они вычитали программу, то могли бы избежать этой путаницы.",
+    "example": "If the actor had accepted the role, the studio might have released the film sooner.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-068",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "first-conditional",
+    "context": "home-family",
+    "prompt": "If Dad finishes his video call by seven, we ___ together before I leave.",
+    "options": [
+      "can eat",
+      "could have eaten",
+      "would eat",
+      "ate"
+    ],
+    "answer": "can eat",
+    "explanation": "Finishing the call is a real future condition that will make a shared meal possible, so \"can eat\" expresses the resulting opportunity.",
+    "translation": "Если папа закончит видеозвонок к семи, мы сможем поесть вместе до моего ухода.",
+    "example": "If the babysitter arrives early, we may stop for coffee on the way.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-069",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "second-conditional",
+    "context": "friends-relationships",
+    "prompt": "My closest friend has no plans to move abroad. If she moved to another continent next month, I ___ to visit twice a year.",
+    "options": [
+      "would try",
+      "will try",
+      "tried",
+      "would have tried"
+    ],
+    "answer": "would try",
+    "explanation": "The move is presented as unlikely, so its imagined future result uses would plus the base verb: \"would try.\"",
+    "translation": "Моя близкая подруга не планирует переезжать за границу. Если бы в следующем месяце она переехала на другой континент, я бы старался навещать её дважды в год.",
+    "example": "If Theo changed careers, his friends would support him.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-070",
+    "type": "multiple_choice",
+    "level": "medium",
+    "topic": "first-conditional",
+    "context": "work-freelance",
+    "prompt": "If the client sends the final figures after noon, I ___ the report until Monday.",
+    "options": [
+      "will not finish",
+      "had not finished",
+      "did not finish",
+      "would not have finished"
+    ],
+    "answer": "will not finish",
+    "explanation": "A late delivery remains a real future possibility, and its practical consequence takes will: \"will not finish.\"",
+    "translation": "Если клиент пришлёт окончательные цифры после полудня, я не закончу отчёт до понедельника.",
+    "example": "If the supplier misses Friday's deadline, we will delay the launch.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-071",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "second-conditional",
+    "context": "travel-transport",
+    "prompt": "The airline has offered you travel credit for a cancelled flight, but accepting it may waive your right to a refund. Complete the advice with a present-time second conditional: ___, I would request a cash refund before accepting the credit.",
+    "options": [
+      "If I were in your position",
+      "If I had been in your position",
+      "If I am in your position",
+      "If I would be in your position"
+    ],
+    "answer": "If I were in your position",
+    "explanation": "Present-time hypothetical advice uses the second conditional: \"if\" plus the unreal past form \"were,\" followed by \"would\" plus the base verb. The past-perfect alternative refers to an unreal past situation.",
+    "translation": "Авиакомпания предложила вам ваучер за отменённый рейс, но его принятие может лишить вас права на возврат денег. Будь я на вашем месте, сначала следовало бы запросить возврат денег, а уже потом принимать ваучер.",
+    "example": "If I were in Maya's position, I would ask the insurer for written confirmation.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-072",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "third-conditional",
+    "context": "food-health-fitness",
+    "prompt": "You kept training through a sharp pain, and a scan was needed this morning. If you ___ when the pain started, the injury might not have worsened so badly overnight.",
+    "options": [
+      "had stopped",
+      "stopped",
+      "would have stopped",
+      "have stopped"
+    ],
+    "answer": "had stopped",
+    "explanation": "The scan and deterioration are completed past outcomes. A third-conditional if-clause uses the past perfect \"had stopped\" before the perfect-modal result \"might not have worsened.\"",
+    "translation": "Ты продолжал тренироваться, несмотря на острую боль, и утром понадобилось обследование. Если бы ты остановился при появлении боли, возможно, за ночь травма не усугубилась бы так сильно.",
+    "example": "If the pharmacist had noticed the dosage error, the patient might have avoided the reaction.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-073",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "mixed-conditional",
+    "context": "entertainment-planning-conflict",
+    "prompt": "The producers replaced the lead actor halfway through filming. If they ___ the original actor, the series would feel more coherent now.",
+    "options": [
+      "had kept",
+      "would have kept",
+      "would keep",
+      "have kept"
+    ],
+    "answer": "had kept",
+    "explanation": "The unreal condition concerns a completed past decision, while the result describes the series now. This mixed conditional therefore uses past perfect: \"had kept.\"",
+    "translation": "Продюсеры заменили главного актёра в середине съёмок. Если бы они оставили первоначального актёра, сейчас сериал казался бы более цельным.",
+    "example": "If the museum had retained its old entrance, visitors would find the layout easier to understand today.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-074",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "unless",
+    "context": "home-family",
+    "prompt": "The siblings cannot proceed with the sale of the family house ___ everyone agrees; one objection stops the process.",
+    "options": [
+      "unless",
+      "if",
+      "even if",
+      "as long as"
+    ],
+    "answer": "unless",
+    "explanation": "\"Cannot proceed unless everyone agrees\" means that agreement is necessary; equivalently, they can proceed only if everyone agrees.",
+    "translation": "Братья и сёстры не могут продолжить продажу семейного дома, пока не согласятся все: одного возражения достаточно, чтобы остановить процесс.",
+    "example": "You cannot enter the laboratory unless a supervisor is present.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "conditionals-075",
+    "type": "multiple_choice",
+    "level": "hard",
+    "topic": "condition-markers",
+    "context": "friends-relationships",
+    "prompt": "I will join Mia on the charity walk ___ she agrees to keep a pace we can both maintain.",
+    "options": [
+      "as long as",
+      "even if",
+      "unless",
+      "in case"
+    ],
+    "answer": "as long as",
+    "explanation": "\"As long as\" states a sufficient condition for joining the walk: agreement on a manageable pace is enough for the speaker to take part.",
+    "translation": "Я присоединюсь к Мии на благотворительной прогулке при условии, что она согласится держать удобный для нас обоих темп.",
+    "example": "You may bring a guest as long as you add their name to the list.",
+    "shuffleOptions": true
+  }
+]

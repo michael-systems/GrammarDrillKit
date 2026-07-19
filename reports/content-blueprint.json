@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "targetQuestionCount": 1050,
+  "levels": ["easy", "medium", "hard"],
+  "contexts": [
+    "home-family",
+    "friends-relationships",
+    "work-freelance",
+    "education",
+    "technology-messaging",
+    "shopping-money-services",
+    "housing-repairs",
+    "travel-transport",
+    "food-health-fitness",
+    "entertainment-planning-conflict"
+  ],
+  "contextPolicy": {
+    "newModuleQuotaPerContext": 10,
+    "phrasalVerbsQuotaPerContext": 15,
+    "maximumAdjacentQuestionsFromSameContext": 2,
+    "maximumSharedPromptOpening": 5,
+    "notes": "Context labels are editorial planning aids. Prompt wording must remain natural and the grammatical decision, not specialist vocabulary, determines level."
+  },
+  "modules": [
+    {
+      "id": "phrasal-verbs",
+      "title": "Phrasal Verbs",
+      "total": 150,
+      "levels": {"easy": 50, "medium": 50, "hard": 50},
+      "packages": ["001-025", "026-050", "051-075", "076-100", "101-125", "126-150"],
+      "source": "donor/PhrasalVerbsQuiz-index.html",
+      "topics": [
+        {"id": "movement-travel", "total": 15, "levels": {"easy": 5, "medium": 5, "hard": 5}},
+        {"id": "entering-leaving", "total": 13, "levels": {"easy": 5, "medium": 4, "hard": 4}},
+        {"id": "daily-routines", "total": 15, "levels": {"easy": 5, "medium": 5, "hard": 5}},
+        {"id": "work-study", "total": 15, "levels": {"easy": 5, "medium": 5, "hard": 5}},
+        {"id": "communication-information", "total": 16, "levels": {"easy": 5, "medium": 5, "hard": 6}},
+        {"id": "relationships-social", "total": 14, "levels": {"easy": 5, "medium": 5, "hard": 4}},
+        {"id": "problems-solutions", "total": 15, "levels": {"easy": 5, "medium": 5, "hard": 5}},
+        {"id": "change-progress", "total": 15, "levels": {"easy": 5, "medium": 5, "hard": 5}},
+        {"id": "objects-devices", "total": 17, "levels": {"easy": 5, "medium": 6, "hard": 6}},
+        {"id": "plans-business", "total": 15, "levels": {"easy": 5, "medium": 5, "hard": 5}}
+      ],
+      "constraints": [
+        "Use donor entries 1-150 exactly once and preserve donor order in IDs.",
+        "Entries 1-50 are easy, 51-100 medium, and 101-150 hard.",
+        "Every option must be a donor key; distractors must be semantically plausible but wrong for the exact donor meaning.",
+        "Preserve donor q through donorQ, rt through translation, key through answer and donorKey, tense through donorTense, and ex through example."
+      ]
+    },
+    {
+      "id": "conditionals",
+      "title": "Conditionals",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "zero-conditional", "total": 10, "levels": {"easy": 6, "medium": 4, "hard": 0}},
+        {"id": "first-conditional", "total": 16, "levels": {"easy": 8, "medium": 8, "hard": 0}},
+        {"id": "second-conditional", "total": 16, "levels": {"easy": 7, "medium": 7, "hard": 2}},
+        {"id": "third-conditional", "total": 16, "levels": {"easy": 0, "medium": 6, "hard": 10}},
+        {"id": "mixed-conditional", "total": 12, "levels": {"easy": 0, "medium": 4, "hard": 8}},
+        {"id": "unless", "total": 8, "levels": {"easy": 3, "medium": 4, "hard": 1}},
+        {"id": "condition-markers", "total": 8, "levels": {"easy": 4, "medium": 2, "hard": 2}},
+        {"id": "wish-if-only", "total": 8, "levels": {"easy": 2, "medium": 3, "hard": 3}},
+        {"id": "formal-inversion", "total": 6, "levels": {"easy": 0, "medium": 2, "hard": 4}}
+      ]
+    },
+    {
+      "id": "modal-verbs",
+      "title": "Modal Verbs",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "ability", "total": 10, "levels": {"easy": 5, "medium": 4, "hard": 1}},
+        {"id": "permission", "total": 8, "levels": {"easy": 4, "medium": 3, "hard": 1}},
+        {"id": "requests-offers", "total": 10, "levels": {"easy": 4, "medium": 4, "hard": 2}},
+        {"id": "obligation", "total": 10, "levels": {"easy": 4, "medium": 4, "hard": 2}},
+        {"id": "lack-of-obligation", "total": 8, "levels": {"easy": 4, "medium": 3, "hard": 1}},
+        {"id": "prohibition", "total": 8, "levels": {"easy": 4, "medium": 3, "hard": 1}},
+        {"id": "advice", "total": 8, "levels": {"easy": 3, "medium": 4, "hard": 1}},
+        {"id": "probability", "total": 10, "levels": {"easy": 2, "medium": 5, "hard": 3}},
+        {"id": "present-deduction", "total": 10, "levels": {"easy": 0, "medium": 5, "hard": 5}},
+        {"id": "past-modals", "total": 12, "levels": {"easy": 0, "medium": 4, "hard": 8}},
+        {"id": "criticism-regret", "total": 6, "levels": {"easy": 0, "medium": 1, "hard": 5}}
+      ]
+    },
+    {
+      "id": "tenses-active",
+      "title": "Tenses Active",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "present-simple", "total": 8, "levels": {"easy": 5, "medium": 3, "hard": 0}},
+        {"id": "present-continuous", "total": 8, "levels": {"easy": 5, "medium": 3, "hard": 0}},
+        {"id": "present-contrast", "total": 10, "levels": {"easy": 4, "medium": 5, "hard": 1}},
+        {"id": "present-perfect", "total": 10, "levels": {"easy": 3, "medium": 5, "hard": 2}},
+        {"id": "present-perfect-continuous", "total": 8, "levels": {"easy": 2, "medium": 4, "hard": 2}},
+        {"id": "past-simple", "total": 8, "levels": {"easy": 4, "medium": 4, "hard": 0}},
+        {"id": "past-continuous", "total": 8, "levels": {"easy": 3, "medium": 4, "hard": 1}},
+        {"id": "past-perfect", "total": 8, "levels": {"easy": 1, "medium": 4, "hard": 3}},
+        {"id": "past-perfect-continuous", "total": 6, "levels": {"easy": 0, "medium": 2, "hard": 4}},
+        {"id": "future-forms", "total": 10, "levels": {"easy": 3, "medium": 5, "hard": 2}},
+        {"id": "future-continuous", "total": 6, "levels": {"easy": 0, "medium": 1, "hard": 5}},
+        {"id": "future-perfect", "total": 6, "levels": {"easy": 0, "medium": 0, "hard": 6}},
+        {"id": "cross-tense-contrast", "total": 4, "levels": {"easy": 0, "medium": 0, "hard": 4}}
+      ]
+    },
+    {
+      "id": "tenses-passive",
+      "title": "Tenses Passive",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "present-simple-passive", "total": 10, "levels": {"easy": 6, "medium": 4, "hard": 0}},
+        {"id": "past-simple-passive", "total": 10, "levels": {"easy": 6, "medium": 4, "hard": 0}},
+        {"id": "future-passive", "total": 8, "levels": {"easy": 4, "medium": 4, "hard": 0}},
+        {"id": "present-continuous-passive", "total": 6, "levels": {"easy": 2, "medium": 3, "hard": 1}},
+        {"id": "past-continuous-passive", "total": 6, "levels": {"easy": 2, "medium": 3, "hard": 1}},
+        {"id": "present-perfect-passive", "total": 8, "levels": {"easy": 2, "medium": 4, "hard": 2}},
+        {"id": "past-perfect-passive", "total": 8, "levels": {"easy": 1, "medium": 4, "hard": 3}},
+        {"id": "modal-passive", "total": 12, "levels": {"easy": 4, "medium": 3, "hard": 5}},
+        {"id": "passive-infinitive-gerund", "total": 10, "levels": {"easy": 2, "medium": 3, "hard": 5}},
+        {"id": "reporting-passive", "total": 10, "levels": {"easy": 0, "medium": 3, "hard": 7}},
+        {"id": "get-passive", "total": 6, "levels": {"easy": 1, "medium": 3, "hard": 2}},
+        {"id": "active-passive-focus", "total": 6, "levels": {"easy": 0, "medium": 2, "hard": 4}}
+      ]
+    },
+    {
+      "id": "articles",
+      "title": "Articles",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "indefinite-article", "total": 12, "levels": {"easy": 8, "medium": 4, "hard": 0}},
+        {"id": "first-subsequent-mention", "total": 10, "levels": {"easy": 4, "medium": 5, "hard": 1}},
+        {"id": "generic-reference", "total": 10, "levels": {"easy": 3, "medium": 5, "hard": 2}},
+        {"id": "institutions", "total": 10, "levels": {"easy": 2, "medium": 3, "hard": 5}},
+        {"id": "meals", "total": 6, "levels": {"easy": 3, "medium": 2, "hard": 1}},
+        {"id": "transport", "total": 6, "levels": {"easy": 2, "medium": 3, "hard": 1}},
+        {"id": "geography", "total": 12, "levels": {"easy": 1, "medium": 3, "hard": 8}},
+        {"id": "unique-reference", "total": 8, "levels": {"easy": 2, "medium": 4, "hard": 2}},
+        {"id": "superlatives-ordinals", "total": 8, "levels": {"easy": 2, "medium": 4, "hard": 2}},
+        {"id": "fixed-expressions", "total": 8, "levels": {"easy": 2, "medium": 3, "hard": 3}},
+        {"id": "abstract-uncountable", "total": 10, "levels": {"easy": 1, "medium": 4, "hard": 5}}
+      ]
+    },
+    {
+      "id": "prepositions",
+      "title": "Prepositions",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "time", "total": 12, "levels": {"easy": 6, "medium": 5, "hard": 1}},
+        {"id": "place", "total": 12, "levels": {"easy": 6, "medium": 5, "hard": 1}},
+        {"id": "movement", "total": 10, "levels": {"easy": 4, "medium": 4, "hard": 2}},
+        {"id": "verb-patterns", "total": 14, "levels": {"easy": 3, "medium": 6, "hard": 5}},
+        {"id": "adjective-patterns", "total": 12, "levels": {"easy": 3, "medium": 5, "hard": 4}},
+        {"id": "noun-patterns", "total": 10, "levels": {"easy": 2, "medium": 4, "hard": 4}},
+        {"id": "everyday-collocations", "total": 12, "levels": {"easy": 4, "medium": 5, "hard": 3}},
+        {"id": "digital-contexts", "total": 8, "levels": {"easy": 2, "medium": 4, "hard": 2}},
+        {"id": "contextual-contrast", "total": 10, "levels": {"easy": 0, "medium": 2, "hard": 8}}
+      ]
+    },
+    {
+      "id": "gerund-infinitive",
+      "title": "Gerund / Infinitive",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "verb-gerund", "total": 14, "levels": {"easy": 6, "medium": 6, "hard": 2}},
+        {"id": "verb-infinitive", "total": 14, "levels": {"easy": 6, "medium": 6, "hard": 2}},
+        {"id": "object-infinitive", "total": 10, "levels": {"easy": 4, "medium": 4, "hard": 2}},
+        {"id": "preposition-gerund", "total": 10, "levels": {"easy": 4, "medium": 4, "hard": 2}},
+        {"id": "purpose-infinitive", "total": 8, "levels": {"easy": 4, "medium": 3, "hard": 1}},
+        {"id": "change-of-meaning", "total": 24, "levels": {"easy": 4, "medium": 10, "hard": 10}},
+        {"id": "passive-perfect-forms", "total": 10, "levels": {"easy": 0, "medium": 4, "hard": 6}},
+        {"id": "complex-contrast", "total": 10, "levels": {"easy": 2, "medium": 3, "hard": 5}}
+      ]
+    },
+    {
+      "id": "word-order-questions",
+      "title": "Word Order / Questions",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "statement-order", "total": 10, "levels": {"easy": 6, "medium": 4, "hard": 0}},
+        {"id": "direct-questions", "total": 12, "levels": {"easy": 6, "medium": 5, "hard": 1}},
+        {"id": "auxiliary-placement", "total": 10, "levels": {"easy": 4, "medium": 5, "hard": 1}},
+        {"id": "subject-questions", "total": 8, "levels": {"easy": 2, "medium": 3, "hard": 3}},
+        {"id": "indirect-questions", "total": 12, "levels": {"easy": 2, "medium": 5, "hard": 5}},
+        {"id": "question-tags", "total": 10, "levels": {"easy": 2, "medium": 4, "hard": 4}},
+        {"id": "negative-questions", "total": 8, "levels": {"easy": 2, "medium": 3, "hard": 3}},
+        {"id": "adverb-placement", "total": 12, "levels": {"easy": 3, "medium": 5, "hard": 4}},
+        {"id": "frequency-adverbs", "total": 8, "levels": {"easy": 3, "medium": 3, "hard": 2}},
+        {"id": "objects-complements", "total": 6, "levels": {"easy": 0, "medium": 2, "hard": 4}},
+        {"id": "multi-clause-order", "total": 4, "levels": {"easy": 0, "medium": 1, "hard": 3}}
+      ]
+    },
+    {
+      "id": "reported-speech",
+      "title": "Reported Speech",
+      "total": 100,
+      "levels": {"easy": 30, "medium": 40, "hard": 30},
+      "packages": ["001-025", "026-050", "051-075", "076-100"],
+      "topics": [
+        {"id": "statements", "total": 10, "levels": {"easy": 6, "medium": 4, "hard": 0}},
+        {"id": "questions", "total": 10, "levels": {"easy": 4, "medium": 4, "hard": 2}},
+        {"id": "commands", "total": 8, "levels": {"easy": 4, "medium": 3, "hard": 1}},
+        {"id": "requests", "total": 8, "levels": {"easy": 4, "medium": 3, "hard": 1}},
+        {"id": "tense-backshift", "total": 12, "levels": {"easy": 3, "medium": 5, "hard": 4}},
+        {"id": "no-backshift", "total": 8, "levels": {"easy": 3, "medium": 3, "hard": 2}},
+        {"id": "pronoun-reference", "total": 8, "levels": {"easy": 2, "medium": 3, "hard": 3}},
+        {"id": "time-place-reference", "total": 8, "levels": {"easy": 2, "medium": 3, "hard": 3}},
+        {"id": "reporting-verbs", "total": 10, "levels": {"easy": 1, "medium": 5, "hard": 4}},
+        {"id": "advice-promises-warnings", "total": 10, "levels": {"easy": 1, "medium": 4, "hard": 5}},
+        {"id": "suggestions", "total": 8, "levels": {"easy": 0, "medium": 3, "hard": 5}}
+      ]
+    }
+  ]
+}
