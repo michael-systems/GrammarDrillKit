@@ -4,7 +4,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { modules } from '../src/module-registry.js';
-import { phrasalVerbsModule } from '../src/modules/phrasal-verbs.js';
 import {
   parseDonorData,
   runValidation,
@@ -18,6 +17,7 @@ const donor = parseDonorData(
   fs.readFileSync(path.join(ROOT, 'donor', 'PhrasalVerbsQuiz-index.html'), 'utf8'),
 );
 const moduleBlueprint = blueprint.modules.find((module) => module.id === 'phrasal-verbs');
+const phrasalVerbsModule = modules.find((module) => module.metadata.id === 'phrasal-verbs');
 
 test('registers Phrasal Verbs first with exactly 150 stable donor-backed questions', () => {
   assert.equal(modules[0], phrasalVerbsModule);

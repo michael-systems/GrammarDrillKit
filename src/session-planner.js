@@ -1,4 +1,5 @@
-import { createSession } from './quiz-engine.js';
+import { createSession, prepareQuestion } from './quiz-engine.js?v=20260719-session-size';
+import { shuffleArray } from './utilities.js?v=20260719-session-size';
 
 export const SESSION_MODES = Object.freeze({
   practice: 'practice',
@@ -31,6 +32,19 @@ function uniqueModuleIds(questions) {
 
 function findTopic(module, topicId) {
   return module?.topics.find((topic) => topic.id === topicId) ?? null;
+}
+
+export function createMistakesReviewSession(
+  questions,
+  { size = 'all', random = Math.random } = {},
+) {
+  const shuffled = shuffleArray(questions, random);
+  const limit = size === 'all'
+    ? shuffled.length
+    : Math.min(Number(size), shuffled.length);
+  return shuffled
+    .slice(0, limit)
+    .map((question) => prepareQuestion(question, random));
 }
 
 export function planSession(modules, options = {}) {

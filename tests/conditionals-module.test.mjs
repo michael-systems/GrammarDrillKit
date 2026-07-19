@@ -4,7 +4,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { modules } from '../src/module-registry.js';
-import { conditionalsModule } from '../src/modules/conditionals.js';
 import { runValidation } from '../scripts/validate-content.mjs';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -12,6 +11,7 @@ const blueprint = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'reports', 'content-blueprint.json'), 'utf8'),
 );
 const moduleBlueprint = blueprint.modules.find((module) => module.id === 'conditionals');
+const conditionalsModule = modules.find((module) => module.metadata.id === 'conditionals');
 
 test('registers Conditionals second with exactly 100 stable questions', () => {
   assert.equal(modules[1], conditionalsModule);
